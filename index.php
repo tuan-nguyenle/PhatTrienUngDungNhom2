@@ -20,9 +20,7 @@
 
 <body>
     <?php include_once './View/header.php'; ?>
-    <div class="blabla">
-    
-    </div>
+    <?php include_once './View/vChiTietDiemHocSinh.php'?>
     <?php include_once './View/footer.php'; ?>
 </body>
 
