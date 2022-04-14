@@ -6,7 +6,7 @@
                     <i class="fa fa-envelope"></i>E-mail :<a href="mailto:19503891.tuan@student.iuh.edu.vn">19503891.tuan@student.iuh.com.vn</a></span>
             </div>
             <div class="dropdown"><a role="button" class="nav-link dropdown-toggle text-light" data-toggle="dropdown">
-                    <img src="Image/df_user.png" alt="" width="16px" height="16px"> Lê Nguyễn Tuân</a>
+                    <i class="fa fa-user"></i> Lê Nguyễn Tuân</a>
                 <div class="dropdown-menu text-center menu--user">
                     <a href="admin.php" class="dropdown-item"><i class="fa fa-house-user" style="color: #95b87b;"></i>  <span>Nhà</span></a>
                     <a href="myinfo.php" class="dropdown-item"><i class="fa fa-user-circle" style="color: #95b87b;"></i>  <span>Hồ Sơ</span></a>
