@@ -11,7 +11,6 @@
                             <i class="bi bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Trang Chủ</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0">
                             <i class="bi bi-book"></i> <span class="ms-1 d-none d-sm-inline">Bài tập</span>
