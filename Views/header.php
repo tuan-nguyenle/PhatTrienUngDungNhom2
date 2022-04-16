@@ -31,7 +31,7 @@
             <?php
                 }
             } else {
-                echo "<a style='color:white;' href='?action=dn'>Đăng Nhập</a>";
+                echo "<a style='color:white;' href='?dn'>Đăng Nhập</a>";
             }
             ?>
         </div>

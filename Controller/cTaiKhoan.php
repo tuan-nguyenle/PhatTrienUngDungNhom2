@@ -8,7 +8,7 @@ class cTaiKhoan
         $modelTaiKhoan = new mTaiKhoan();
         $user = $modelTaiKhoan->login($username, $password);
         $row = mysqli_fetch_assoc($user);
-        if ($user == true) {
+        if ($row >= 1) {
             $_SESSION['maTaiKhoan'] = $row['maTaiKhoan'];
             $_SESSION['password'] = $row['password'];
             $_SESSION['maTruong'] = $row['maTruong'];

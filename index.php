@@ -11,8 +11,9 @@ if (isset($_POST['password'])) {
 if (isset($_POST['submit'])) {
     $account->login($us, $pw);
 }
-if(isset($_REQUEST['logout'])){
+if (isset($_REQUEST['logout'])) {
     session_destroy();
+    header( "Refresh:0.2; url=index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -39,17 +40,31 @@ if(isset($_REQUEST['logout'])){
 <body>
     <?php include_once './Views/header.php'; ?>
     <?php
-    if (isset($_GET['action'])) {
-        switch ($_GET['action']) {
-            case 'dn':
-                include_once './Views/vDangNhap.php';
+    if(isset($_GET['dn']) or !isset($_SESSION['LoginSuccess'])){
+        include_once './Views/vDangNhap.php';
+    }
+    if (isset($_SESSION['IDChucVu'])) {
+        switch ($_SESSION['IDChucVu']) {
+            case '2':
+                include_once './Views/vMenu.php';
+                include_once './Views/vSidebar.php';
                 break;
             default:
-                echo 'nothing';
+                # code...
                 break;
         }
-    } else {
     }
+    // if (isset($_SESSION['IDChucVu'])) {
+    //     switch ($_SESSION['IDChucVu']) {
+    //         case '2':
+    //             include_once './Views/vMenu.php';
+    //             include_once './Views/vSidebar.php';
+    //             break;
+    //         default:
+    //             # code...
+    //             break;
+    //     }
+    // }
     ?>
     <?php include_once './Views/footer.php'; ?>
 </body>
