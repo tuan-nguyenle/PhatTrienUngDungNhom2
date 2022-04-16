@@ -1,20 +1,3 @@
-<?php
-include_once './Controller/cTaiKhoan.php';
-session_start();
-$account = new cTaiKhoan();
-if (isset($_POST['username'])) {
-    $us = $_POST['username'];
-}
-if (isset($_POST['password'])) {
-    $pw = $_POST['password'];
-}
-if (isset($_POST['submit'])) {
-    $account->login($us, $pw);
-}
-if(isset($_REQUEST['logout'])){
-    session_destroy();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +11,6 @@ if(isset($_REQUEST['logout'])){
     <link rel="stylesheet" href="./bootrap/fontawesome-free-5.15.3-web/css/fontawesome.css">
     <link rel="stylesheet" href="./bootrap/fontawesome-free-5.15.3-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="./CSS/header_footer.css">
-    <link rel="stylesheet" href="./CSS/style.css">
     <script src="./bootrap/fontawesome-free-5.15.3-web/js/all.js"></script>
     <script src="./bootrap/JS/jquery.min.js"></script>
     <script src="./bootrap/JS/popper.min.js"></script>
@@ -37,21 +19,13 @@ if(isset($_REQUEST['logout'])){
 </head>
 
 <body>
-    <?php include_once './Views/header.php'; ?>
-    <?php
-    if (isset($_GET['action'])) {
-        switch ($_GET['action']) {
-            case 'dn':
-                include_once './Views/vDangNhap.php';
-                break;
-            default:
-                echo 'nothing';
-                break;
-        }
-    } else {
-    }
+    <?php include_once './Controller/cTaiKhoan.php';
+    $log = new cTaiKhoan();
+    $log->l();
     ?>
-    <?php include_once './Views/footer.php'; ?>
+    <?php //include_once './View/header.php'; ?>
+    <?php //include_once './sidebar.php'?>
+    <?php //include_once './View/footer.php'; ?>
 </body>
 
 </html>

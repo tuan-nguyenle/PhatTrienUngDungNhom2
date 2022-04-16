@@ -1,17 +1,14 @@
 <?php
-include 'db.php';
+include_once 'db.php';
 class mTaiKhoan
 {
-    public function login($maTaiKhoan, $matKhau)
+    public function login($username, $password)
     {
-        $db = new database();
-        if ($db->databaseConnect($conn)) {
-            $query = "SELECT * FROM `taikhoan` WHERE `maTaiKhoan` = '$maTaiKhoan' and `password` = '$matKhau'";
-            $con = mysqli_query($conn, $query);
-            $db->databaseClose($conn);
-            return $con;
-        } else {
-            return false;
-        }
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `taikhoan` WHERE `maTaiKhoan` = $username and `password` like '$password'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
     }
 }
