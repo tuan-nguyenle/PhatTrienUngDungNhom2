@@ -6,6 +6,7 @@
                     <?php
                     if (isset($_SESSION['LoginSuccess'])) {
                         if ($_SESSION['LoginSuccess'] == true) {
+                            $giaoVien = new giaoVien($_SESSION['maTaiKhoan'],$_SESSION['maTruong'],$_SESSION['IDChucVu']);
                             echo $_SESSION['maTruong'];
                         }
                     } else {
@@ -21,10 +22,10 @@
                 if ($_SESSION['LoginSuccess'] == true) {
             ?>
                     <div class="dropdown"><a role="button" class="nav-link dropdown-toggle text-light" data-toggle="dropdown">
-                            <i class="fa fa-user"></i>&emsp;<?= $_SESSION['maTaiKhoan']?></a>
+                            <i class="fa fa-user"></i>&emsp;<?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['tenGiaoVien'] ?></a>
                         <div class="dropdown-menu text-center menu--user">
                             <a href="index.php" class="dropdown-item"><i class="fa fa-house-user" style="color: #95b87b;"></i> <span>Nhà</span></a>
-                            <a href="myinfo.php" class="dropdown-item"><i class="fa fa-user-circle" style="color: #95b87b;"></i> <span>Hồ Sơ</span></a>
+                            <a href="?myInfo" class="dropdown-item"><i class="fa fa-user-circle" style="color: #95b87b;"></i> <span>Hồ Sơ</span></a>
                             <a href="?logout" class="dropdown-item"><i class="fas fa-sign-out-alt" style="color: #95b87b;"></i> <span>Đăng Xuất</span></a>
                         </div>
                     </div>

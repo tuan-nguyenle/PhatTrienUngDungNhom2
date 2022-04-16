@@ -1,4 +1,5 @@
 <?php
+include_once './Controller/cGiaoVien.php';
 include_once './Controller/cTaiKhoan.php';
 session_start();
 $account = new cTaiKhoan();
@@ -13,7 +14,7 @@ if (isset($_POST['submit'])) {
 }
 if (isset($_REQUEST['logout'])) {
     session_destroy();
-    header( "Refresh:0.2; url=index.php");
+    header("Refresh:0.2; url=index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -40,31 +41,29 @@ if (isset($_REQUEST['logout'])) {
 <body>
     <?php include_once './Views/header.php'; ?>
     <?php
-    if(isset($_GET['dn']) or !isset($_SESSION['LoginSuccess'])){
+    if (isset($_GET['dn']) or !isset($_SESSION['LoginSuccess'])) {
         include_once './Views/vDangNhap.php';
+    }
+    if (isset($_GET['myInfo'])) {
+        include_once './Views/vMenu.php';
+        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+        include_once './Views/vSidebar.php';
+        echo "<div class='col py-3'>";
+        include_once './Views/vInfo.php';
+        echo "</div></div></div>";
     }
     if (isset($_SESSION['IDChucVu'])) {
         switch ($_SESSION['IDChucVu']) {
             case '2':
                 include_once './Views/vMenu.php';
+                echo "<div class='container-fluid'><div class='row flex-nowrap'>";
                 include_once './Views/vSidebar.php';
+                echo "</div></div>";
                 break;
             default:
-                # code...
                 break;
         }
     }
-    // if (isset($_SESSION['IDChucVu'])) {
-    //     switch ($_SESSION['IDChucVu']) {
-    //         case '2':
-    //             include_once './Views/vMenu.php';
-    //             include_once './Views/vSidebar.php';
-    //             break;
-    //         default:
-    //             # code...
-    //             break;
-    //     }
-    // }
     ?>
     <?php include_once './Views/footer.php'; ?>
 </body>

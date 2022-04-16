@@ -7,10 +7,9 @@ class database
     public function connectDatabase()
     {
         $this->connect = mysqli_connect("localhost", "root", "", "e-learning");
+        mysqli_set_charset($this->connect, 'utf8');
         if (!$this->connect) {
             echo "<script>alert('Kết Nối thất bại')</script>";
-        } else {
-            mysqli_set_charset($this->connect, 'utf-8');
         }
         return $this->connect;
     }
