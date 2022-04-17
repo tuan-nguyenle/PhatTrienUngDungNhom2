@@ -7,8 +7,8 @@
           </button>
           <div class="collapse navbar-collapse navbar-center" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
-              <a class="nav-link active" href="#">Các môn học</a>
+              <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
+              <a class="nav-link active" href="?dsachlop">Danh Sách Lớp Đảm Nhận</a>
               <a class="nav-link active" href="Quanliduyetcauhoi.html">Duyệt Câu Hỏi</a>
             </div>
           </div>

@@ -1,6 +1,7 @@
 <?php
 include_once './Controller/cGiaoVien.php';
 include_once './Controller/cTaiKhoan.php';
+include_once './Controller/cTruong.php';
 session_start();
 $account = new cTaiKhoan();
 if (isset($_POST['username'])) {
@@ -15,6 +16,14 @@ if (isset($_POST['submit'])) {
 if (isset($_REQUEST['logout'])) {
     session_destroy();
     header("Refresh:0.2; url=index.php");
+}
+if (isset($_SESSION['LoginSuccess'])) {
+    $truong = new truong($_SESSION['maTruong']);
+    $thongTinTruong = mysqli_fetch_assoc($truong->getTenTruong());
+    if ($_SESSION['LoginSuccess'] == true && $_SESSION['IDChucVu'] == 2) {
+        $giaoVien = new giaoVien($_SESSION['maTaiKhoan'], $_SESSION['maTruong'], $_SESSION['IDChucVu']);
+        $row = mysqli_fetch_assoc($giaoVien->getAllThongTinGiaoVienQuaUsername());
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -48,17 +57,27 @@ if (isset($_REQUEST['logout'])) {
         include_once './Views/vMenu.php';
         echo "<div class='container-fluid'><div class='row flex-nowrap'>";
         include_once './Views/vSidebar.php';
-        echo "<div class='col py-3'>";
         include_once './Views/vInfo.php';
-        echo "</div></div></div>";
-    }
-    if (isset($_SESSION['IDChucVu'])) {
+        echo "</div></div>";
+    } elseif (isset($_GET['dsachlop']) && $_SESSION['IDChucVu'] = 2) {
+        if($_GET['dsachlop']!= null){
+            include_once './Views/vMenu.php';
+            echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+            include_once './Views/vSidebar.php';
+            include_once './Views/vDanhSachLop.php';
+            echo "</div></div>";
+        }else{
+            include_once './Views/vMenu.php';
+            echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+            include_once './Views/vSidebar.php';
+            include_once './Views/vDanhSachLopDamNhan.php';
+            echo "</div></div>";
+        }
+    } elseif (isset($_SESSION['IDChucVu'])) {
         switch ($_SESSION['IDChucVu']) {
             case '2':
                 include_once './Views/vMenu.php';
-                echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                include_once './Views/vSidebar.php';
-                echo "</div></div>";
+                echo "<img class='container-fluid' src='./Image/174789494_617724652960683_5786597518664777510_n.jpg'>";
                 break;
             default:
                 break;

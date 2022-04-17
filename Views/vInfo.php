@@ -1,31 +1,32 @@
+<div class='col py-3'>
 <div class="card ">
     <div class="card-body ">
         <div class="d-flex">
-            <img src="<?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['anhDaiDien'] ?>" class="mr-5" width="100" height="100">
+            <img src="<?= $row['anhDaiDien'] ?>" class="mr-5" style="max-width: 100px;max-height: 100px;">
             <ul>
                 <li class="list-inline">
-                    <h4>Họ tên : <?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['tenGiaoVien'] ?></h4>
+                    <h5>Họ tên : <?=  $row['tenGiaoVien'] ?></h5>
                 </li>
                 <li class="list-inline">
-                    <h4>Ngày Sinh : <?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['ngaySinh'] ?></h4>
+                    <h5>Ngày Sinh : <?=  $row['ngaySinh'] ?></h5>
                 </li>
                 <li class="list-inline">
-                    <h4>Địa Chỉ : <?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['diaChi'] ?></h4>
+                    <h5>Địa Chỉ : <?=  $row['diaChi'] ?></h5>
                 </li>
                 <li class="list-inline">
-                    <h4>CCCD : <?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['CCCD'] ?></h4>
+                    <h5>CCCD : <?=  $row['CCCD'] ?></h5>
                 </li>
                 <li class="list-inline">
-                    <h4>Email : <?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['email'] ?></h4>
+                    <h5>Email : <?=  $row['email'] ?></h5>
                 </li>
                 <li class="list-inline">
-                    <h4>SDT : <?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['SDT'] ?></h4>
+                    <h5>SDT : <?=  $row['SDT'] ?></h5>
                 </li>
                 <li class="list-inline">
-                    <h4>Mã Tài Khoản : <?= $giaoVien->getAllThongTinGiaoVienQuaUsername()['maTaiKhoan'] ?></h4>
+                    <h5>Mã Tài Khoản : <?=  $row['maTaiKhoan'] ?></h5>
                 </li>
             </ul>
-
         </div>
     </div>
+</div>
 </div>

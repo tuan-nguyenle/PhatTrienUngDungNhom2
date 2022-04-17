@@ -5,7 +5,7 @@
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <li>
-                <a href="Danhsachlop.html" class="nav-link px-0 align-middle">
+                <a href="?dsachlop" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Danh sách Lớp</span></a>
             </li>
             <li>

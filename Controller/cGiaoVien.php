@@ -9,7 +9,7 @@ class giaoVien
     //Define class giaoVien
     public function __construct($maTaiKhoan, $maTruong, $IDChucVu)
     {
-        // $this->maGiaoVien = $this->getAllThongTinGiaoVienQuaUsername()['maGiaoVien'];
+        $this->maGiaoVien = $this->getMaGiaoVien($maTaiKhoan);
         // $this->tenGiaoVien = $this->getAllThongTinGiaoVienQuaUsername()['tenGiaoVien'];
         // $this->anhDaiDien = $this->getAllThongTinGiaoVienQuaUsername()['anhDaiDien'];
         // $this->ngaySinh = $this->getAllThongTinGiaoVienQuaUsername()['ngaySinh'];
@@ -28,7 +28,26 @@ class giaoVien
     {
         $modelGiaoVien = new mGiaoVien();
         $dataGV = $modelGiaoVien->getAllThongTinGiaoVienQuaUsername($this->maTaiKhoan);
-        $row = mysqli_fetch_assoc($dataGV);
-        return $row;
+        return $dataGV;
+    }
+    // get Ma Giao Vien
+    public function getMaGiaoVien($username)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        $maGiaoVien = $modelGiaoVien->getMaGiaoVien($username)->fetch_assoc();
+        return $maGiaoVien['maGiaoVien'];
+    }
+    // get Tat ca cac lop dam nhan
+    public function getAllLopDamNhan()
+    {
+        $modelGiaoVien = new mGiaoVien();
+        $dataGV = $modelGiaoVien->getAllLopDamNhan($this->getMaGiaoVien($this->maTaiKhoan));
+        return $dataGV;
+    }
+    // get hoc sinh trong lop
+    public function getDanhSachLop($maLop)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getAllDanhSachLop($maLop);
     }
 }
