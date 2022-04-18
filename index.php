@@ -20,7 +20,7 @@ if (isset($_REQUEST['logout'])) {
 if (isset($_SESSION['LoginSuccess'])) {
     $truong = new truong($_SESSION['maTruong']);
     $thongTinTruong = mysqli_fetch_assoc($truong->getTenTruong());
-    if ($_SESSION['LoginSuccess'] == true && $_SESSION['IDChucVu'] == 2) {
+    if ($_SESSION['LoginSuccess'] == true && ($_SESSION['IDChucVu'] == 2 or $_SESSION['IDChucVu'] == 1)) {
         $giaoVien = new giaoVien($_SESSION['maTaiKhoan'], $_SESSION['maTruong'], $_SESSION['IDChucVu']);
         $row = mysqli_fetch_assoc($giaoVien->getAllThongTinGiaoVienQuaUsername());
     }
@@ -34,7 +34,8 @@ if (isset($_SESSION['LoginSuccess'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="./Image/lms-learning-management-system-concept-with-big-vector-27335395.jpg">
-    <link rel="stylesheet" href="./bootrap/bootstrap.min.css">
+    <!-- Latest compiled JavaScript -->
+    <link rel="stylesheet" href="./bootrap/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./bootrap/fontawesome-free-5.15.3-web/css/all.css">
     <link rel="stylesheet" href="./bootrap/fontawesome-free-5.15.3-web/css/fontawesome.css">
     <link rel="stylesheet" href="./bootrap/fontawesome-free-5.15.3-web/css/fontawesome.min.css">
@@ -42,6 +43,7 @@ if (isset($_SESSION['LoginSuccess'])) {
     <link rel="stylesheet" href="./CSS/style.css">
     <script src="./bootrap/fontawesome-free-5.15.3-web/js/all.js"></script>
     <script src="./bootrap/JS/jquery.min.js"></script>
+    <script src="./bootrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="./bootrap/JS/popper.min.js"></script>
     <script src="./bootrap/JS/bootstrap.min.js"></script>
     <title>Hệ thống học tập trực tuyến</title>
@@ -52,21 +54,26 @@ if (isset($_SESSION['LoginSuccess'])) {
     <?php
     if (isset($_GET['dn']) or !isset($_SESSION['LoginSuccess'])) {
         include_once './Views/vDangNhap.php';
-    }
-    if (isset($_GET['myInfo'])) {
+    } elseif (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
+        include_once './Views/vMenu.php';
+        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+        include_once './Views/vSidebar.php';
+        include_once './Views/vChiTietDiemHocSinh.php';
+        echo "</div></div>";
+    } elseif (isset($_GET['myInfo'])) {
         include_once './Views/vMenu.php';
         echo "<div class='container-fluid'><div class='row flex-nowrap'>";
         include_once './Views/vSidebar.php';
         include_once './Views/vInfo.php';
         echo "</div></div>";
-    } elseif (isset($_GET['dsachlop']) && $_SESSION['IDChucVu'] = 2) {
-        if($_GET['dsachlop']!= null){
+    } elseif (isset($_GET['dsachlop']) && ($_SESSION['IDChucVu'] = 2 or $_SESSION['IDChucVu'] = 1)) {
+        if ($_GET['dsachlop'] != null) {
             include_once './Views/vMenu.php';
             echo "<div class='container-fluid'><div class='row flex-nowrap'>";
             include_once './Views/vSidebar.php';
             include_once './Views/vDanhSachLop.php';
             echo "</div></div>";
-        }else{
+        } else {
             include_once './Views/vMenu.php';
             echo "<div class='container-fluid'><div class='row flex-nowrap'>";
             include_once './Views/vSidebar.php';
@@ -75,9 +82,9 @@ if (isset($_SESSION['LoginSuccess'])) {
         }
     } elseif (isset($_SESSION['IDChucVu'])) {
         switch ($_SESSION['IDChucVu']) {
-            case '2':
+            case '2' or '1':
                 include_once './Views/vMenu.php';
-                echo "<img class='container-fluid' src='./Image/174789494_617724652960683_5786597518664777510_n.jpg'>";
+                include_once './Views/vHomePage.php';
                 break;
             default:
                 break;

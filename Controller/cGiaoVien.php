@@ -10,7 +10,7 @@ class giaoVien
     public function __construct($maTaiKhoan, $maTruong, $IDChucVu)
     {
         $this->maGiaoVien = $this->getMaGiaoVien($maTaiKhoan);
-        // $this->tenGiaoVien = $this->getAllThongTinGiaoVienQuaUsername()['tenGiaoVien'];
+        $this->tenGiaoVien = $this->getTenGiaoVien($maTaiKhoan);
         // $this->anhDaiDien = $this->getAllThongTinGiaoVienQuaUsername()['anhDaiDien'];
         // $this->ngaySinh = $this->getAllThongTinGiaoVienQuaUsername()['ngaySinh'];
         // $this->diaChi = $this->getAllThongTinGiaoVienQuaUsername()['diaChi'];
@@ -18,7 +18,7 @@ class giaoVien
         // $this->email = $this->getAllThongTinGiaoVienQuaUsername()['email'];
         // $this->SDT = $this->getAllThongTinGiaoVienQuaUsername()['SDT'];
         // $this->gioiTinh = $this->getAllThongTinGiaoVienQuaUsername()['gioiTinh'];
-        // $this->maMonHoc = $this->getAllThongTinGiaoVienQuaUsername()['maMonHoc'];
+        $this->maMonHoc = $this->getMaMonHoc($maTaiKhoan);
         $this->maTaiKhoan = $maTaiKhoan;
         $this->maTruong = $maTruong;
         $this->IDChucVu = $IDChucVu;
@@ -37,6 +37,20 @@ class giaoVien
         $maGiaoVien = $modelGiaoVien->getMaGiaoVien($username)->fetch_assoc();
         return $maGiaoVien['maGiaoVien'];
     }
+    // get ten Giao Vien
+    public function getTenGiaoVien($username)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        $tenGiaoVien = $modelGiaoVien->getTenGiaoVien($username)->fetch_assoc();
+        return $tenGiaoVien['tenGiaoVien'];
+    }
+    // getMaMonHoc
+    public function getMaMonHoc($username)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        $maMonHoc = $modelGiaoVien->getMaMonHoc($username)->fetch_assoc();
+        return $maMonHoc['maMonHoc'];
+    }
     // get Tat ca cac lop dam nhan
     public function getAllLopDamNhan()
     {
@@ -49,5 +63,11 @@ class giaoVien
     {
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->getAllDanhSachLop($maLop);
+    }
+    // get Diem Cua Lop Theo Mon
+    public function getDiemLopTheoMon($maLop)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getAllDiemHocSinhTheoMon($maLop, $this->maMonHoc);
     }
 }

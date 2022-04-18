@@ -1,4 +1,7 @@
 <div class="col py-3">
+    <div class="row m-2" style="float: right;">
+        <a href="?thongKeBaiKiemTra=<?= $_GET['dsachlop'] ?>" class="btn btn-danger">Thống kê điểm Bài Kiểm Tra</a>
+    </div>
     <table class="table">
         <thead>
             <tr>

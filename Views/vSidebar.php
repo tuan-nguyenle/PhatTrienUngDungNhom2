@@ -9,8 +9,8 @@
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Danh sách Lớp</span></a>
             </li>
             <li>
-                <a href="Taobaikiemtra.html" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Tạo Bài kiểm tra</span> </a>
+                <a href="?taoCauHoi" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Tạo câu hỏi</span> </a>
             </li>
         </ul>
     </div>
