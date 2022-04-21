@@ -54,37 +54,41 @@ if (isset($_SESSION['LoginSuccess'])) {
     <?php
     if (isset($_GET['dn']) or !isset($_SESSION['LoginSuccess'])) {
         include_once './Views/vDangNhap.php';
-    } elseif (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
-        include_once './Views/vMenu.php';
-        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-        include_once './Views/vSidebar.php';
-        include_once './Views/vChiTietDiemHocSinh.php';
-        echo "</div></div>";
     } elseif (isset($_GET['myInfo'])) {
         include_once './Views/vMenu.php';
         echo "<div class='container-fluid'><div class='row flex-nowrap'>";
         include_once './Views/vSidebar.php';
         include_once './Views/vInfo.php';
         echo "</div></div>";
-    } elseif (isset($_GET['dsachlop']) && ($_SESSION['IDChucVu'] = 2 or $_SESSION['IDChucVu'] = 1)) {
-        if ($_GET['dsachlop'] != null) {
-            include_once './Views/vMenu.php';
-            echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-            include_once './Views/vSidebar.php';
-            include_once './Views/vDanhSachLop.php';
-            echo "</div></div>";
-        } else {
-            include_once './Views/vMenu.php';
-            echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-            include_once './Views/vSidebar.php';
-            include_once './Views/vDanhSachLopDamNhan.php';
-            echo "</div></div>";
-        }
     } elseif (isset($_SESSION['IDChucVu'])) {
         switch ($_SESSION['IDChucVu']) {
             case '2' or '1':
-                include_once './Views/vMenu.php';
-                include_once './Views/vHomePage.php';
+                if (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
+                    include_once './Views/vMenu.php';
+                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                    include_once './Views/vSidebar.php';
+                    include_once './Views/vChiTietDiemHocSinh.php';
+                    echo "</div></div>";
+                } elseif ($_GET['taoCauHoi']) {
+                    include_once '';
+                } elseif (isset($_GET['dsachlop']) && ($_SESSION['IDChucVu'] == 2 or $_SESSION['IDChucVu'] == 1)) {
+                    if ($_GET['dsachlop'] != null) {
+                        include_once './Views/vMenu.php';
+                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                        include_once './Views/vSidebar.php';
+                        include_once './Views/vDanhSachLop.php';
+                        echo "</div></div>";
+                    } else {
+                        include_once './Views/vMenu.php';
+                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                        include_once './Views/vSidebar.php';
+                        include_once './Views/vDanhSachLopDamNhan.php';
+                        echo "</div></div>";
+                    }
+                } else {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vHomePage.php';
+                }
                 break;
             default:
                 break;

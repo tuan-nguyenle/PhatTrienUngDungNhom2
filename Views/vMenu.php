@@ -9,7 +9,8 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="index.php">Trang chủ</a>
           <a class="nav-link active" href="?dsachlop">Danh Sách Lớp Đảm Nhận</a>
-          <?php if ($_SESSION['IDChucVu'] = 1) {
+          <?php
+          if ($_SESSION['IDChucVu'] == 1) {
             echo "<a class='nav-link active' href='Quanliduyetcauhoi.html'>Duyệt Câu Hỏi</a>";
           }
           ?>
