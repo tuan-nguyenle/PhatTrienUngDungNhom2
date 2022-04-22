@@ -5,7 +5,7 @@
                 <span class="text-header"><i class="fas fa-school"></i> Tên Trường :
                     <?php
                     if (isset($_SESSION['LoginSuccess'])) {
-                        if ($_SESSION['LoginSuccess'] == true && $_SESSION['IDChucVu'] == 2) {
+                        if ($_SESSION['LoginSuccess'] == true) {
                             echo $thongTinTruong['tenTruong'];
                         }
                     }
@@ -19,7 +19,7 @@
                 if ($_SESSION['LoginSuccess'] == true) {
             ?>
                     <div class="dropdown"><a role="button" class="nav-link dropdown-toggle text-light" data-toggle="dropdown" id="dropdownMenuButton">
-                            <img style="max-width: 35px;max-height: 35px;" src='<?= $row['anhDaiDien'] ?>'></img>&emsp;<?= $row['tenGiaoVien'] ?></a>
+                            <img style="max-width: 35px;max-height: 35px;" src='<?= $giaoVien->getAnhDaiDien() ?>'></img>&emsp;<?= $giaoVien->getTenGiaoVien()?></a>
                         <div class="dropdown-menu text-center menu--user" labelledby="dropdownMenuButton">
                             <a href="index.php" class="dropdown-item"><i class="fa fa-house-user" style="color: #95b87b;"></i> <span>Nhà</span></a>
                             <a href="?myInfo" class="dropdown-item"><i class="fa fa-user-circle" style="color: #95b87b;"></i> <span>Hồ Sơ</span></a>

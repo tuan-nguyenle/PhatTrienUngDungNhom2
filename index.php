@@ -19,10 +19,9 @@ if (isset($_REQUEST['logout'])) {
 }
 if (isset($_SESSION['LoginSuccess'])) {
     $truong = new truong($_SESSION['maTruong']);
-    $thongTinTruong = mysqli_fetch_assoc($truong->getTenTruong());
+    $thongTinTruong = mysqli_fetch_assoc($truong->getThongTinTruong());
     if ($_SESSION['LoginSuccess'] == true && ($_SESSION['IDChucVu'] == 2 or $_SESSION['IDChucVu'] == 1)) {
         $giaoVien = new giaoVien($_SESSION['maTaiKhoan'], $_SESSION['maTruong'], $_SESSION['IDChucVu']);
-        $row = mysqli_fetch_assoc($giaoVien->getAllThongTinGiaoVienQuaUsername());
     }
 }
 ?>

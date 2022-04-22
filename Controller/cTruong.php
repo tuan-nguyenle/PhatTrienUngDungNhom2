@@ -6,7 +6,7 @@ class truong
     function __construct($maTruong) {
         $this->maTruong = $maTruong;
     }
-    public function getTenTruong()
+    public function getThongTinTruong()
     {
         $truong = new mTruong();
         return $truong->getThongTinTruongQuaID($this->maTruong);
