@@ -69,6 +69,12 @@ if (isset($_SESSION['LoginSuccess'])) {
                     include_once './Views/vSidebar.php';
                     include_once './Views/vChiTietDiemHocSinh.php';
                     echo "</div></div>";
+                } elseif (isset($_GET['taoBaiKiemTra'])) {
+                    include_once './Views/vMenu.php';
+                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                    include_once './Views/vSidebar.php';
+                    include_once './Views/vTaoBaiKiemTra.php';
+                    echo "</div></div>";
                 } elseif (isset($_GET['taoCauHoi'])) {
                     include_once './Views/vMenu.php';
                     echo "<div class='container-fluid'><div class='row flex-nowrap'>";
@@ -101,11 +107,10 @@ if (isset($_SESSION['LoginSuccess'])) {
     ?>
     <?php include_once './Views/footer.php'; ?>
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
+        var allEditors = document.querySelectorAll("#txtCauHoi, #txtDA1, #txtDA2, #txtDA3,#txtDA4,#txtDADung");
+        for (var i = 0; i < allEditors.length; ++i) {
+            ClassicEditor.create(allEditors[i]);
+        }
     </script>
 </body>
 

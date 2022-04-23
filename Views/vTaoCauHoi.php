@@ -1,54 +1,68 @@
-<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 <div class="col py-3">
-    <form class="row g-3">
-        <h3 class="text__center col-md-12" style="text-align: center;">Tạo câu hỏi</h3>
+    <form class="row g-3" method="POST">
+        <h3 class="text__center col-md-12" style="text-align: center;"><strong>Tạo câu hỏi Trắc Nghiệm môn <?= $giaoVien->getTenMon() ?></strong></h3>
         <div class="col-md-12">
-            <label for="Quantityquestion" class="form-label accordion-bod">Câu hỏi</label>
-            <textarea type="text" cols="30" rows="5" class="form-control" name="myTextarea" id="editor" ></textarea>
+            <label for="txtCauHoi" class="form-label accordion-bod"><strong>Câu hỏi</strong></label>
+            <textarea type="text" cols="30" rows="2" class="form-control" name="txtCauHoi" id="txtCauHoi"><?= (isset($_REQUEST['txtCauHoi'])) ? $_REQUEST['txtCauHoi'] : '' ?></textarea>
         </div>
-        <div class="col-md-6">
-            <label for="inputTimel4" class="form-label">Đáp án A</label>
-            <input type="input" class="form-control" id="inputTime11" name="txtDA1">
+        <div class="col-md-12">
+            <label for="txtDA1" class="form-label accordion-bod"><strong>Đáp Án 1</strong></label>
+            <textarea type="text" cols="30" rows="2" class="form-control" name="txtDA1" id="txtDA1"><?= (isset($_REQUEST['txtDA1'])) ? $_REQUEST['txtDA1'] : '' ?></textarea>
         </div>
-        <div class="col-md-6">
-            <label for="inputTimel4" class="form-label">Đáp án B</label>
-            <input type="input" class="form-control" id="inputTime11" name="txtDA2">
+        <div class="col-md-12">
+            <label for="txtDA2" class="form-label accordion-bod"><strong>Đáp Án 2</strong></label>
+            <textarea type="text" cols="30" rows="2" class="form-control" name="txtDA2" id="txtDA2"><?= (isset($_REQUEST['txtDA2'])) ? $_REQUEST['txtDA2'] : '' ?></textarea>
         </div>
-        <div class="col-md-6">
-            <label for="inputTimel4" class="form-label">Đáp án C</label>
-            <input type="input" class="form-control" id="inputTime11" name="txtDA3">
+        <div class="col-md-12">
+            <label for="txtDA3" class="form-label accordion-bod"><strong>Đáp Án 3</strong></label>
+            <textarea type="text" cols="30" rows="2" class="form-control" name="txtDA3" id="txtDA3">
+            <?= (isset($_REQUEST['txtDA3'])) ? $_REQUEST['txtDA3'] : '' ?>
+            </textarea>
         </div>
-        <div class="col-md-6">
-            <label for="inputTimel4" class="form-label">Đáp án D</label>
-            <input type="input" class="form-control" id="inputTime11" name="txtDA4">
+        <div class="col-md-12">
+            <label for="txtDA4" class="form-label accordion-bod"><strong>Đáp Án 4</strong></label>
+            <textarea type="text" cols="30" rows="2" class="form-control" name="txtDA4" id="txtDA4"><?= (isset($_REQUEST['txtDA4'])) ? $_REQUEST['txtDA4'] : '' ?></textarea>
         </div>
-        <div class="col-md-6">
-            <label for="dokho" class="form-label">Độ khó</label>
-            <input type="number" class="form-control" id="dokho" name="doKho">
+        <div class="col-md-12">
+            <label for="txtDADung" class="form-label accordion-bod"><strong>Đáp Án Đúng</strong></label>
+            <textarea type="text" cols="30" rows="2" class="form-control" name="txtDADung" id="txtDADung"><?= (isset($_REQUEST['txtDADung'])) ? $_REQUEST['txtDADung'] : '' ?></textarea>
         </div>
-        <div class="col-md-6">
-            <label for="chapter" class="form-label">Chương</label>
-            <input type="number" class="form-control" id="chapter" name="chuong">
+        <div class="col-md-4">
+            <label for="dokho" class="form-label"><strong>Độ khó</strong></label>
+            <input type="number" class="form-control" id="dokho" name="txtDoKho">
         </div>
-        <div class="col-md-6">
-            <label for="answerright" class="form-label">Đáp án đúng</label>
-            <input type="text" class="form-control" id="answerright" name="txtDADung">
+        <div class="col-md-4">
+            <label for="chapter" class="form-label"><strong>Chương</strong></label>
+            <input type="number" class="form-control" id="chapter" name="txtChuong">
         </div>
-        <div class="col-md-6">
-            <label for="answerright" class="form-label">Khối</label>
-            <select class="form-select" aria-label="Default select example" name="txtKhoi">
-                <option selected="">...</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
+        <div class="col-md-4">
+            <label for="answerright" class="form-label"><strong>Khối</strong></label>
+            <select class="form-select" style="color: black;" aria-label="Default select example" name="txtKhoi">
+                <?php
+                $thongTinKhoi = $truong->getAllKhoi();
+                if ($thongTinKhoi) {
+                    if (mysqli_num_rows($thongTinKhoi) > 0) {
+                        while ($row = mysqli_fetch_assoc($thongTinKhoi)) {
+                            echo "<option value='" . $row['maKhoi'] . "'>" . $row['moTa'] . "</option><br>";
+                        }
+                    }
+                }
+                ?>
             </select>
         </div>
         <div class="col-12">
-            <button type="button" class="btn btn-primary btn__taocauhoi"">
+            <button type="submit" class="btn btn-primary btn__taocauhoi" name="btnThemCauHoi">
                 Thêm câu hỏi
             </button>
-
         </div>
     </form>
+    <?php
+    if (isset($_REQUEST['btnThemCauHoi'])) {
+        if ($giaoVien->taoCauHoiTracNghiem(trim($_REQUEST['txtKhoi']), trim($_REQUEST['txtChuong']), trim($_REQUEST['txtCauHoi']), trim($_REQUEST['txtDoKho']), trim($_REQUEST['txtDA1']), trim($_REQUEST['txtDA2']), trim($_REQUEST['txtDA3']), trim($_REQUEST['txtDA4']), trim($_REQUEST['txtDADung']))) {
+            echo "<script>alert('Thêm câu hỏi thành công')</script>";
+        } else {
+            echo "<script>alert('Thêm câu hỏi không thành công')</script>";
+        }
+    }
+    ?>
 </div>

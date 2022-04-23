@@ -41,6 +41,13 @@ class giaoVien
         $maMonHoc = $modelGiaoVien->getMaMonHoc($this->maTaiKhoan);
         return mysqli_fetch_assoc($maMonHoc)['maMonHoc'];
     }
+    // get Ten Mon Hoc
+    public function getTenMon()
+    {
+        $modelGiaoVien = new mGiaoVien();
+        $tenMonHoc = $modelGiaoVien->getTenMonHoc($this->getMaMonHoc());
+        return mysqli_fetch_assoc($tenMonHoc)['tenMonHoc'];
+    }
     // getAnhDaidien
     public function getAnhDaiDien()
     {
@@ -108,5 +115,11 @@ class giaoVien
     {
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->getAllDiemHocSinhTheoMon($maLop, $this->getMaMonHoc());
+    }
+    // tao Cau Hoi
+    public function taoCauHoiTracNghiem($maKhoi, $chuong, $cauHoi, $doKho, $dapAnA, $dapAnB, $dapAnC, $dapAnD, $dapAnDung)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->taoCauHoiTracNghiem($this->getMaMonHoc(), $maKhoi, $chuong, $cauHoi, $doKho, $dapAnA, $dapAnB, $dapAnC, $dapAnD, $dapAnDung);
     }
 }

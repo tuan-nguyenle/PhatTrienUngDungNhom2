@@ -12,6 +12,10 @@
                 <a href="?taoCauHoi" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Tạo câu hỏi</span> </a>
             </li>
+            <li>
+                <a href="?taoBaiKiemTra" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Tạo Bài Kiểm tra</span> </a>
+            </li>
         </ul>
     </div>
 </div>

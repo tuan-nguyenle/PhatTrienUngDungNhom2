@@ -42,6 +42,16 @@ class mGiaoVien
         $connectDB->closeDatabase();
         return $result;
     }
+    // get Ten Mon Hoc
+    public function getTenMonHoc($maMon)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT `monhoc`.`tenMonHoc` FROM `monhoc` WHERE `monhoc`.`maMonHoc` = $maMon";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
     // lay anh dai dien
     public function getAnhDaiDien($username)
     {
@@ -145,6 +155,16 @@ class mGiaoVien
         INNER JOIN `lop` ON `lop`.`maLop` = `de`.`maLop`
         INNER JOIN `monhoc` ON `monhoc`.`maMonHoc`=`de`.`maMonHoc`
         WHERE `de`.`maLop` = $maLop AND `monhoc`.`maMonHoc`= $maMon";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // them cau hoi
+    public function taoCauHoiTracNghiem($mamonHoc, $maKhoi, $chuong, $cauHoi, $doKho, $dapAnA, $dapAnB, $dapAnC, $dapAnD, $dapAnDung)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "INSERT INTO `ngạnhangcauhoitracnghiem` (`maCauHoi`, `maMonHoc`, `maKhoi`, `chuong`, `cauHoi`, `doKho`, `trangThai`, `dapAnA`, `dapAnB`, `dapAnC`, `dapAnD`, `dapAnDung`) VALUES (NULL,'$mamonHoc', '$maKhoi','$chuong','$cauHoi','$doKho', b'0','$dapAnA','$dapAnB','$dapAnC','$dapAnD','$dapAnDung')";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;
