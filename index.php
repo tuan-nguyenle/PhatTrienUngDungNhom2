@@ -68,8 +68,12 @@ if (isset($_SESSION['LoginSuccess'])) {
                     include_once './Views/vSidebar.php';
                     include_once './Views/vChiTietDiemHocSinh.php';
                     echo "</div></div>";
-                } elseif ($_GET['taoCauHoi']) {
-                    include_once '';
+                } elseif (isset($_GET['taoCauHoi'])) {
+                    include_once './Views/vMenu.php';
+                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                    include_once './Views/vSidebar.php';
+                    include_once './Views/vTaoCauHoi.php';
+                    echo "</div></div>";
                 } elseif (isset($_GET['dsachlop']) && ($_SESSION['IDChucVu'] == 2 or $_SESSION['IDChucVu'] == 1)) {
                     if ($_GET['dsachlop'] != null) {
                         include_once './Views/vMenu.php';
@@ -95,6 +99,13 @@ if (isset($_SESSION['LoginSuccess'])) {
     }
     ?>
     <?php include_once './Views/footer.php'; ?>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 </body>
 
 </html>
