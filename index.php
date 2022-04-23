@@ -45,6 +45,7 @@ if (isset($_SESSION['LoginSuccess'])) {
     <script src="./bootrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="./bootrap/JS/popper.min.js"></script>
     <script src="./bootrap/JS/bootstrap.min.js"></script>
+    <script src="./bootrap/JS/ckeditor.js"></script>
     <title>Hệ thống học tập trực tuyến</title>
 </head>
 
