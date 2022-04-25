@@ -27,7 +27,7 @@ class mQuanTriTruong
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
-        $sql = "SELECT `taikhoan`.`maTaiKhoan`,`giaovien`.`tenGiaoVien` as `ten`,`giaovien`.`email`,`giaovien`.`SDT`,`giaovien`.`diaChi` FROM `taikhoan` INNER JOIN `giaovien` ON `taikhoan`.`maTaiKhoan`=`giaovien`.`maTaiKhoan` WHERE `taikhoan`.`IDChucVu`= '1'";
+        $sql = "SELECT `taikhoan`.`maTaiKhoan`,`giaovien`.`tenGiaoVien` as `ten`,`giaovien`.`email`,`giaovien`.`SDT`,`giaovien`.`diaChi`,`taikhoan`.`password`,`giaovien`.`CCCD`,`giaovien`.`ngaySinh`,`taikhoan`.`IDChucVu` FROM `taikhoan` INNER JOIN `giaovien` ON `taikhoan`.`maTaiKhoan`=`giaovien`.`maTaiKhoan` WHERE `taikhoan`.`IDChucVu`= '1'";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;
@@ -37,7 +37,7 @@ class mQuanTriTruong
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
-        $sql = "SELECT `taikhoan`.`maTaiKhoan`,`giaovien`.`tenGiaoVien` as `ten`,`giaovien`.`email`,`giaovien`.`SDT`,`giaovien`.`diaChi` FROM `taikhoan` INNER JOIN `giaovien` ON `taikhoan`.`maTaiKhoan`=`giaovien`.`maTaiKhoan` WHERE `taikhoan`.`IDChucVu`= '2'";
+        $sql = "SELECT `taikhoan`.`maTaiKhoan`,`giaovien`.`tenGiaoVien` as `ten`,`giaovien`.`email`,`giaovien`.`SDT`,`giaovien`.`diaChi`,`taikhoan`.`password`,`giaovien`.`CCCD`,`giaovien`.`ngaySinh`,`taikhoan`.`IDChucVu` FROM `taikhoan` INNER JOIN `giaovien` ON `taikhoan`.`maTaiKhoan`=`giaovien`.`maTaiKhoan` WHERE `taikhoan`.`IDChucVu`= '2'";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;

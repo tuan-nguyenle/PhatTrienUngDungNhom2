@@ -161,6 +161,24 @@ if (isset($_SESSION['LoginSuccess'])) {
         for (var i = 0; i < allEditors.length; ++i) {
             ClassicEditor.create(allEditors[i]);
         }
+        // Update
+        $(document).on('click', '.update', function(e) {
+            var maTaiKhoanGV = $(this).attr("data-id");
+            var tenGV = $(this).attr("data-tenGV");
+            var emailGV = $(this).attr("data-emailGV");
+            var SDTGV = $(this).attr("data-SDTGV");
+            var diaChiGV = $(this).attr("data-diaChiGV");
+            var CCCDGV = $(this).attr("data-CCCDGV");
+            var ngaySinhGv = $(this).attr("data-ngaySinhGV");
+            $('#maTaiKhoanGV').val(maTaiKhoanGV);
+            $('#tenGV').val(tenGV);
+            $('#CCCDGV').val(CCCDGV);
+            $('#ngaySinhGv').val(ngaySinhGv);
+            $('#emailGV').val(emailGV);
+            $('#SDTGV').val(SDTGV);
+            $('#diaChiGV').val(diaChiGV);
+            $('#matKhauGV').val("**********");
+        });
     </script>
 </body>
 

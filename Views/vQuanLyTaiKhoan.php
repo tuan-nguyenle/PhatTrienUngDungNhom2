@@ -54,7 +54,7 @@
             </thead>
             <tbody>
                 <?php
-                if (isset($_REQUEST['chucVu'])) {
+                if (isset($_REQUEST['chucVu']) and $_REQUEST['chucVu'] <= 6) {
                     switch ($_REQUEST['chucVu']) {
                         case '1':
                             $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuToTruong();
@@ -75,7 +75,7 @@
                             break;
                     }
                 } else {
-                    $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuGiaoVien();
+                    echo "<script>alert('Không Có Giá Trị')</script>";
                 }
                 if (mysqli_num_rows($thongTinTaiKhoan) > 0) {
                     while ($ds = mysqli_fetch_assoc($thongTinTaiKhoan)) {
@@ -87,12 +87,20 @@
                             <td><?= $ds['diaChi'] ?></td>
                             <td><?= $ds['SDT'] ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit">Chỉnh sửa</button>
-                                <button type="button" class="btn btn-danger">Xóa</button>
+                                <?php if ($_REQUEST['chucVu'] == 2 or $_REQUEST['chucVu'] == 1) { ?>
+                                    <button type="button" class="btn btn-warning">
+                                        <a style="text-decoration: none;" href="#editUser" class="edit text-black" data-toggle="modal">
+                                            <i class="material-icons update" data-toggle="tooltip" data-id="<?= $ds['maTaiKhoan'] ?>" data-CCCDGV="<?= $ds['CCCD'] ?>" data-ngaySinhGV="<?= $ds['ngaySinh'] ?>" data-tenGV="<?= $ds['ten'] ?>" data-emailGV="<?= $ds['email'] ?>" data-SDTGV="<?= $ds['SDT'] ?>" data-diaChiGV="<?= $ds['diaChi'] ?>" title="Edit">Edit</i>
+                                        </a></button>
+                                    <button type="button" class="btn btn-danger">Xóa</button>
+                                <?php } ?>
                             </td>
                         </tr>
                 <?php
                     }
+                }
+                if ($_REQUEST['chucVu'] == 2 or $_REQUEST['chucVu'] == 1) {
+                    include_once './Views/vChinhSuaGiaoVien.php';
                 }
                 ?>
             </tbody>
@@ -148,112 +156,6 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal chỉnh sửa -->
-<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #135dfc">
-                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa</h5>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <div class="container-fluid mt-3">
-                        <h4 class="mb-2">Thông tin</h4>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <label for="myEmail">Tên</label>
-                                    <input class="form-control" type="text" placeholder="Nguyễn Văn A" aria-label="Disabled input example" disabled>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="mymon">Môn</label>
-                                    <input type="mymon" class="form-control" id="mon" placeholder="Tất cả" aria-label="Disabled input example" disabled>
-                                </div>
-                            </div>
-                            <h4 class="mb-2">Phân công giáo viên</h4>
-                            <div class="form-group">
-                                <label for="myState">
-                                    <h6>Lớp học</h6>
-                                </label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 6.1
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 6.2
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 6.3
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 6.4
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 6.5
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 7.1
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 7.2
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 7.3
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 7.4
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 8.1
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Lớp 9.1
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="myCheck">
-                                    <label class="form-check-label" for="myCheck">
-                                        <h5>Đồng ý thay đổi</h5>
-
-                                    </label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--body-->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
