@@ -1,7 +1,6 @@
 <?php
 include_once './Controller/cGiaoVien.php';
 include_once './Controller/cTaiKhoan.php';
-include_once './Controller/cTruong.php';
 session_start();
 $account = new cTaiKhoan();
 if (isset($_POST['username'])) {
@@ -18,10 +17,15 @@ if (isset($_REQUEST['logout'])) {
     header("Refresh:0.2; url=index.php");
 }
 if (isset($_SESSION['LoginSuccess'])) {
+    include_once './Controller/cTruong.php';
     $truong = new truong($_SESSION['maTruong']);
     $thongTinTruong = mysqli_fetch_assoc($truong->getThongTinTruong());
-    if ($_SESSION['LoginSuccess'] == true && ($_SESSION['IDChucVu'] == 2 or $_SESSION['IDChucVu'] == 1)) {
+    if ($_SESSION['LoginSuccess'] == true && ($_SESSION['IDChucVu'] == 1 or $_SESSION['IDChucVu'] == 2)) {
         $giaoVien = new giaoVien($_SESSION['maTaiKhoan'], $_SESSION['maTruong'], $_SESSION['IDChucVu']);
+    }
+    if ($_SESSION['LoginSuccess'] == true && $_SESSION['IDChucVu'] == 4) {
+        include_once './Controller/cQuanTriTruong.php';
+        $quanTriTruong = new quanTriTruong($_SESSION['maTaiKhoan'], $_SESSION['maTruong'], $_SESSION['IDChucVu']);
     }
 }
 ?>
@@ -62,7 +66,7 @@ if (isset($_SESSION['LoginSuccess'])) {
         echo "</div></div>";
     } elseif (isset($_SESSION['IDChucVu'])) {
         switch ($_SESSION['IDChucVu']) {
-            case '2' or '1':
+            case '1':
                 if (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
                     include_once './Views/vMenu.php';
                     echo "<div class='container-fluid'><div class='row flex-nowrap'>";
@@ -81,7 +85,7 @@ if (isset($_SESSION['LoginSuccess'])) {
                     include_once './Views/vSidebar.php';
                     include_once './Views/vTaoCauHoi.php';
                     echo "</div></div>";
-                } elseif (isset($_GET['dsachlop']) && ($_SESSION['IDChucVu'] == 2 or $_SESSION['IDChucVu'] == 1)) {
+                } elseif (isset($_GET['dsachlop'])) {
                     if ($_GET['dsachlop'] != null) {
                         include_once './Views/vMenu.php';
                         echo "<div class='container-fluid'><div class='row flex-nowrap'>";
@@ -100,6 +104,52 @@ if (isset($_SESSION['LoginSuccess'])) {
                     include_once './Views/vHomePage.php';
                 }
                 break;
+            case '2':
+                if (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
+                    include_once './Views/vMenu.php';
+                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                    include_once './Views/vSidebar.php';
+                    include_once './Views/vChiTietDiemHocSinh.php';
+                    echo "</div></div>";
+                } elseif (isset($_GET['taoBaiKiemTra'])) {
+                    include_once './Views/vMenu.php';
+                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                    include_once './Views/vSidebar.php';
+                    include_once './Views/vTaoBaiKiemTra.php';
+                    echo "</div></div>";
+                } elseif (isset($_GET['taoCauHoi'])) {
+                    include_once './Views/vMenu.php';
+                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                    include_once './Views/vSidebar.php';
+                    include_once './Views/vTaoCauHoi.php';
+                    echo "</div></div>";
+                } elseif (isset($_GET['dsachlop'])) {
+                    if ($_GET['dsachlop'] != null) {
+                        include_once './Views/vMenu.php';
+                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                        include_once './Views/vSidebar.php';
+                        include_once './Views/vDanhSachLop.php';
+                        echo "</div></div>";
+                    } else {
+                        include_once './Views/vMenu.php';
+                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+                        include_once './Views/vSidebar.php';
+                        include_once './Views/vDanhSachLopDamNhan.php';
+                        echo "</div></div>";
+                    }
+                } else {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vHomePage.php';
+                }
+                break;
+            case '4':
+                if (isset($_REQUEST['quanLyTaiKhoan'])) {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vQuanLyTaiKhoan.php';
+                } else {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vHomePage.php';
+                }
             default:
                 break;
         }
