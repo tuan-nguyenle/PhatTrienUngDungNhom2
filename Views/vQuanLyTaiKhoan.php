@@ -25,12 +25,7 @@
                 </button>
                 <div class="collapse navbar-collapse navbar-center" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <form class="d-flex">
-                            <!-- Tìm kiếm-->
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                        <!-- Thêm-->
+                        <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
                     </div>
                 </div>
             </div>
@@ -52,9 +47,9 @@
                     <th scope="col">Tùy chỉnh</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
                 <?php
-                if (isset($_REQUEST['chucVu']) and $_REQUEST['chucVu'] <= 6) {
+                if (isset($_REQUEST['chucVu']) and $_REQUEST['chucVu'] <= 5) {
                     switch ($_REQUEST['chucVu']) {
                         case '1':
                             $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuToTruong();
@@ -72,10 +67,13 @@
                             $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuQuanTriThanhPho();
                             break;
                         default:
+                            $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuToTruong();
                             break;
                     }
                 } else {
                     echo "<script>alert('Không Có Giá Trị')</script>";
+                    $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuToTruong();
+                    $_REQUEST['chucVu'] = 1;
                 }
                 if (mysqli_num_rows($thongTinTaiKhoan) > 0) {
                     while ($ds = mysqli_fetch_assoc($thongTinTaiKhoan)) {
@@ -89,8 +87,8 @@
                             <td>
                                 <?php if ($_REQUEST['chucVu'] == 2 or $_REQUEST['chucVu'] == 1) { ?>
                                     <button type="button" class="btn btn-warning">
-                                        <a style="text-decoration: none;" href="#editUser" class="edit text-black" data-toggle="modal">
-                                            <i class="material-icons update" data-toggle="tooltip" data-id="<?= $ds['maTaiKhoan'] ?>" data-CCCDGV="<?= $ds['CCCD'] ?>" data-ngaySinhGV="<?= $ds['ngaySinh'] ?>" data-tenGV="<?= $ds['ten'] ?>" data-emailGV="<?= $ds['email'] ?>" data-SDTGV="<?= $ds['SDT'] ?>" data-diaChiGV="<?= $ds['diaChi'] ?>" title="Edit">Edit</i>
+                                        <a style="text-decoration: none;" href="#editGV" class="edit text-black" data-toggle="modal">
+                                            <i class="material-icons updateGV" data-toggle="tooltip" data-id="<?= $ds['maTaiKhoan'] ?>" data-CCCDGV="<?= $ds['CCCD'] ?>" data-ngaySinhGV="<?= $ds['ngaySinh'] ?>" data-tenGV="<?= $ds['ten'] ?>" data-emailGV="<?= $ds['email'] ?>" data-SDTGV="<?= $ds['SDT'] ?>" data-diaChiGV="<?= $ds['diaChi'] ?>" title="Edit">Edit</i>
                                         </a></button>
                                     <button type="button" class="btn btn-danger">Xóa</button>
                                 <?php } ?>

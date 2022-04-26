@@ -161,8 +161,16 @@ if (isset($_SESSION['LoginSuccess'])) {
         for (var i = 0; i < allEditors.length; ++i) {
             ClassicEditor.create(allEditors[i]);
         }
-        // Update
-        $(document).on('click', '.update', function(e) {
+        // search
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            console.log(value);
+            $("#tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        // Update GV
+        $(document).on("click", ".updateGV", function(e) {
             var maTaiKhoanGV = $(this).attr("data-id");
             var tenGV = $(this).attr("data-tenGV");
             var emailGV = $(this).attr("data-emailGV");
@@ -170,14 +178,13 @@ if (isset($_SESSION['LoginSuccess'])) {
             var diaChiGV = $(this).attr("data-diaChiGV");
             var CCCDGV = $(this).attr("data-CCCDGV");
             var ngaySinhGv = $(this).attr("data-ngaySinhGV");
-            $('#maTaiKhoanGV').val(maTaiKhoanGV);
-            $('#tenGV').val(tenGV);
-            $('#CCCDGV').val(CCCDGV);
-            $('#ngaySinhGv').val(ngaySinhGv);
-            $('#emailGV').val(emailGV);
-            $('#SDTGV').val(SDTGV);
-            $('#diaChiGV').val(diaChiGV);
-            $('#matKhauGV').val("**********");
+            $("#maTaiKhoanGV").val(maTaiKhoanGV);
+            $("#tenGV").val(tenGV);
+            $("#CCCDGV").val(CCCDGV);
+            $("#ngaySinhGv").val(ngaySinhGv);
+            $("#emailGV").val(emailGV);
+            $("#SDTGV").val(SDTGV);
+            $("#diaChiGV").val(diaChiGV);
         });
     </script>
 </body>

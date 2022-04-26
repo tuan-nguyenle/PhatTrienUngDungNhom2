@@ -49,4 +49,10 @@ class quanTriTruong
         $modelQuanTriTruong = new mQuanTriTruong();
         return $modelQuanTriTruong->getAllChucVu();
     }
+    // thay doi thong tin giang vien
+    public function updateThongTinGiaoVien($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->updateThongTinGiaoVien($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi);
+    }
 }

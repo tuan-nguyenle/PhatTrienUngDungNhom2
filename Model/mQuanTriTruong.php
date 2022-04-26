@@ -62,4 +62,14 @@ class mQuanTriTruong
         $connectDB->closeDatabase();
         return $result;
     }
+    // thay doi thong tin giang vien
+    public function updateThongTinGiaoVien($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "UPDATE `giaovien` SET `tenGiaoVien`='$hoTen',`ngaySinh`='$ngaySinh',`diaChi`='$diaChi',`CCCD`='$CCCD',`email`='$email',`SDT`= '$SDT' WHERE `maTaiKhoan`='$maTaiKhoan'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
 }
