@@ -1,14 +1,14 @@
-<div style="display:flex;justify-content:center;align-items:center; " class="m-3">
-    <div style="margin:auto;">
+<div style="display:flex;justify-content:center;align-items:center; height: 440px;" class="m-3">
+    <!-- <div style="margin:auto;"> -->
         <div class="card">
-            <div class="card-block">
+            <!-- <div class="card-block"> -->
                 <h2 class="card-header text-center">Hệ Thống Học Tập Trực Tuyến</h2>
                 <div class="card-body">
                     <div class="row justify-content-md-center">
                         <div class="col-md-6">
                             <form class="mt-3" action="index.php" method="post" id="login">
                                 <input id="anchor" type="hidden" name="anchor" value="">
-                                <div class="form-group">
+                                <div class="form-group" style="margin-bottom:8px">
                                     <label for="username" class="sr-only">
                                         Tên tài khoản
                                     </label>
@@ -23,13 +23,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
-    </div>
+    <!-- </div> -->
 </div>
-
-
-
-
-
-
