@@ -1,4 +1,4 @@
-<div style="display:flex;justify-content:center;align-items:centerl;" class="m-3">
+<div style="display:flex;justify-content:center;align-items:center; " class="m-3">
     <div style="margin:auto;">
         <div class="card">
             <div class="card-block">
@@ -27,3 +27,9 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
