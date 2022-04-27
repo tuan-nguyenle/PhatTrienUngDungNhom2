@@ -53,7 +53,7 @@ if (isset($_SESSION['LoginSuccess'])) {
     <title>Hệ thống học tập trực tuyến</title>
     <style>
         .bg {
-            background: url(https://i.ibb.co/87GbbFP/2799006.jpg) no-repeat;
+            background: url(./Image/2799006.jpg) no-repeat;
             background-size: cover;
             height: 100%;
             width: 100%;
