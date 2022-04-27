@@ -1,3 +1,9 @@
+<div class="bg"></div>
+<div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+</div>
 <div style="display:flex;justify-content:center;align-items:centerl;" class="m-3">
     <div style="margin:auto;">
         <div class="card">

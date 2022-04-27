@@ -21,7 +21,7 @@
                     <h2 class="nopadding">Liên hệ</h2>
 
                     <p>Hệ thống học tập trực tuyến<br>
-                        <i class="fa fa-phone-square"></i> ĐT : 0869.0869 512<br>
+                        <i class="fa fa-phone-square"></i> ĐT : 0869.236 512<br>
                         <i class="fa fa-envelope"></i> E-mail : <a class="mail-link" href="mailto:19503891.tuan@student.iuh.edu.vn">19503891.tuan@student.iuh.edu.vn</a><br>
                     </p>
 
