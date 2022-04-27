@@ -15,6 +15,9 @@
           if ($_SESSION['IDChucVu'] == 1) {
             echo "<a class='nav-link active' href='?duyetCauHoi'>Duyệt Câu Hỏi</a>";
           }
+          if ($_SESSION['IDChucVu'] == 3) {
+            echo "<a class='nav-link active' href='?xemThongTinMonHoc'>Xem Thông Tin bài học</a>";
+          }
           if ($_SESSION['IDChucVu'] == 4) {
             echo "<a class='nav-link active' href='?quanLyTaiKhoan&&chucVu=2'>Quản Lý Tài Khoản</a>";
             echo "<a class='nav-link active' href='?thongKeThanhTich'>Thống kê thành tích</a>";

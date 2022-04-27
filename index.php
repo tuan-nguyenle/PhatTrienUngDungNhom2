@@ -250,6 +250,10 @@ if (isset($_SESSION['LoginSuccess'])) {
                     include_once './Views/vHomePage.php';
                 }
                 break;
+            case '3':
+                include_once './Views/vMenu.php';
+                include_once './Views/vHomePage.php';
+                break;
             case '4':
                 if (isset($_REQUEST['quanLyTaiKhoan'])) {
                     include_once './Views/vMenu.php';
