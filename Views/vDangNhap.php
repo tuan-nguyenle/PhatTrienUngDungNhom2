@@ -24,7 +24,7 @@
                                     <label for="password" class="sr-only">Mật khẩu</label>
                                     <input type="password" name="password" id="password" value="" class="form-control" placeholder="Mật khẩu" autocomplete="current-password">
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Đăng nhập</button>
+                                <button type="submit" name="submit" class="btn btn-primary btn-block mt-3" id="loginbtn" value="login">Đăng nhập</button>
                             </form>
                         </div>
                     </div>

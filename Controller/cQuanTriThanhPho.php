@@ -1,5 +1,5 @@
 <?php
-include './Model/mQuanTriThanhPho.php';
+include_once './Model/mQuanTriThanhPho.php';
 class quanTriThanhPho
 {
     protected $tenDangNhap, $tenNguoiQuanTri, $matKhau, $diaChi, $SDT;

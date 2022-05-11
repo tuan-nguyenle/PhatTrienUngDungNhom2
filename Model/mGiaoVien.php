@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include_once 'db.php';
 class mGiaoVien
 {
     // lay tat ca thong tin giao vien

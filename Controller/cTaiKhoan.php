@@ -1,5 +1,5 @@
 <?php
-include './Model/mTaikhoan.php';
+include_once './Model/mTaikhoan.php';
 class cTaiKhoan
 {
     function login($username, $password)

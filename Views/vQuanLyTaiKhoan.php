@@ -88,73 +88,24 @@
                                 <?php if ($_REQUEST['chucVu'] == 2 or $_REQUEST['chucVu'] == 1) { ?>
                                     <button type="button" class="btn btn-warning">
                                         <a style="text-decoration: none;" href="#editGV" class="edit text-black" data-toggle="modal">
-                                            <i class="material-icons updateGV" data-toggle="tooltip" data-id="<?= $ds['maTaiKhoan'] ?>" data-CCCDGV="<?= $ds['CCCD'] ?>" data-ngaySinhGV="<?= $ds['ngaySinh'] ?>" data-tenGV="<?= $ds['ten'] ?>" data-emailGV="<?= $ds['email'] ?>" data-SDTGV="<?= $ds['SDT'] ?>" data-diaChiGV="<?= $ds['diaChi'] ?>" title="Edit">Edit</i>
+                                            <i class="material-icons updateGV" data-toggle="tooltip" data-id="<?= $ds['maTaiKhoan'] ?>" data-CCCDGV="<?= $ds['CCCD'] ?>" data-ngaySinhGV="<?= $ds['ngaySinh'] ?>" data-tenGV="<?= $ds['ten'] ?>" data-emailGV="<?= $ds['email'] ?>" data-SDTGV="<?= $ds['SDT'] ?>" data-diaChiGV="<?= $ds['diaChi'] ?>" title="Edit">Chỉnh Sửa</i>
                                         </a></button>
-                                    <button type="button" class="btn btn-danger">Xóa</button>
                                 <?php } ?>
+                                <button type="button" class="xoaTaiKhoan btn btn-danger" data-toggle="modal" data-target="#xoa" data-id="<?= $ds['maTaiKhoan'] ?>">
+                                    Xoá Tài Khoản
+                                </button>
                             </td>
                         </tr>
                 <?php
                     }
                 }
+                include_once './Views/vThemNguoiDung.php';
+                include_once './Views/vXoaTaiKhoan.php';
                 if ($_REQUEST['chucVu'] == 2 or $_REQUEST['chucVu'] == 1) {
                     include_once './Views/vChinhSuaGiaoVien.php';
                 }
                 ?>
             </tbody>
         </table>
-    </div>
-</div>
-
-<!-- modal -->
-<div class="modal fade" id="them" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #135dfc">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm tài khoản mới</h5>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid mt-3">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-sm-6">
-                                <label for="myEmail">Email</label>
-                                <input class="form-control" type="text" placeholder="abc@gmai.com" aria-label="Disabled input example">
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="myPassword">Password</label>
-                                <input type="password" class="form-control" id="myPassword" placeholder="******">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Nhập lại password</label>
-                            <input type="text" class="form-control" id="password2" placeholder="******">
-
-                            <label for="myState">State</label>
-                            <select id="mon" class="form-control">
-                                <option selected>Tất cả môn</option>
-                                <option value="1">Ngữ văn</option>
-                                <option value="2">Toán</option>
-                                <option value="3">Giáo dục công dân</option>
-                                <option value="4">Lịch sử</option>
-                                <option value="5">Địa lí</option>
-                                <option value="6">Ngoại ngữ</option>
-                                <option value="7">Khoa học tự nhiên</option>
-                                <option value="8">Công nghệ</option>
-                                <option value="9">Tin học</option>
-                                <option value="10">Giáo dục thể chất</option>
-                                <option value="11">Nghệ thuật</option>
-                                </option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

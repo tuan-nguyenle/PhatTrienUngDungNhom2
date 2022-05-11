@@ -1,6 +1,6 @@
 <?php
-include_once './Controller/cGiaoVien.php';
 include_once './Controller/cTaiKhoan.php';
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 session_start();
 $account = new cTaiKhoan();
 if (isset($_POST['username'])) {
@@ -9,7 +9,7 @@ if (isset($_POST['username'])) {
 if (isset($_POST['password'])) {
     $pw = $_POST['password'];
 }
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit']) && ($_REQUEST['submit'] == 'login')) {
     $account->login($us, $pw);
 }
 if (isset($_REQUEST['logout'])) {
@@ -21,7 +21,12 @@ if (isset($_SESSION['LoginSuccess'])) {
     $truong = new truong($_SESSION['maTruong']);
     $thongTinTruong = mysqli_fetch_assoc($truong->getThongTinTruong());
     if ($_SESSION['LoginSuccess'] == true && ($_SESSION['IDChucVu'] == 1 or $_SESSION['IDChucVu'] == 2)) {
+        include_once './Controller/cGiaoVien.php';
         $giaoVien = new giaoVien($_SESSION['maTaiKhoan'], $_SESSION['maTruong'], $_SESSION['IDChucVu']);
+    }
+    if ($_SESSION['LoginSuccess'] == true && $_SESSION['IDChucVu'] == 3) {
+        include_once './Controller/cHocSinh.php';
+        $hocSinh = new hocSinh($_SESSION['maTaiKhoan'], $_SESSION['maTruong'], $_SESSION['IDChucVu']);
     }
     if ($_SESSION['LoginSuccess'] == true && $_SESSION['IDChucVu'] == 4) {
         include_once './Controller/cQuanTriTruong.php';
@@ -168,10 +173,14 @@ if (isset($_SESSION['LoginSuccess'])) {
         include_once './Views/vDangNhap.php';
     } elseif (isset($_GET['myInfo'])) {
         include_once './Views/vMenu.php';
-        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-        include_once './Views/vSidebar.php';
-        include_once './Views/vInfo.php';
-        echo "</div></div>";
+        if ($_SESSION['IDChucVu'] == '1' || $_SESSION['IDChucVu'] == '2') {
+            echo "<div class='container-fluid'><div class='row flex-nowrap'>";
+            include_once './Views/vSidebar.php';
+            include_once './Views/vInfo.php';
+            echo "</div></div>";
+        } else {
+            include_once './Views/vInfo.php';
+        }
     } elseif (isset($_SESSION['IDChucVu'])) {
         switch ($_SESSION['IDChucVu']) {
             case '1':
@@ -251,8 +260,16 @@ if (isset($_SESSION['LoginSuccess'])) {
                 }
                 break;
             case '3':
-                include_once './Views/vMenu.php';
-                include_once './Views/vHomePage.php';
+                if (isset($_REQUEST['nopbai']) && ($_REQUEST['maDe'] != null)) {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vNopBaiTuLuan.php';
+                } elseif (isset($_REQUEST['xemThongTinMonHoc'])) {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vXemThongTinChiTietMonHoc.php';
+                } else {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vHomePage.php';
+                }
                 break;
             case '4':
                 if (isset($_REQUEST['quanLyTaiKhoan'])) {
@@ -298,6 +315,11 @@ if (isset($_SESSION['LoginSuccess'])) {
             $("#SDTGV").val(SDTGV);
             $("#diaChiGV").val(diaChiGV);
         });
+        // xoa Nguoi Dung
+        $(document).on("click", ".xoaTaiKhoan", function(e) {
+            var maTaiKhoan = $(this).attr("data-id");
+            $("#maTaiKhoan").val(maTaiKhoan);
+        })
     </script>
 </body>
 

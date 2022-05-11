@@ -55,4 +55,34 @@ class quanTriTruong
         $modelQuanTriTruong = new mQuanTriTruong();
         return $modelQuanTriTruong->updateThongTinGiaoVien($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi);
     }
+    // Thêm Giáo Viên
+    public function themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu);
+    }
+    // Thêm Học Sinh
+    public function themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu);
+    }
+    // Thêm Quan Tri
+    public function themQuanTriTruong($maTaiKhoan, $tenNguoiQuanTri, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->themQuanTriTruong($maTaiKhoan, $tenNguoiQuanTri, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu);
+    }
+    // Xem Tài Khoản chưa có người dùng
+    public function xemTaiKhoanCuoiCung()
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->xemTaiKhoanCuoiCung();
+    }
+    // xem tat ca cac mon hoc
+    public function xemTatCaCacMonCoTrongHeThong()
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->xemTatCaCacMonCoTrongHeThong();
+    }
 }

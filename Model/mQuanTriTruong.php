@@ -72,4 +72,69 @@ class mQuanTriTruong
         $connectDB->closeDatabase();
         return $result;
     }
+    // Thêm Giảng Viên
+    public function themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        mysqli_query($connectDB->connect, "INSERT INTO `taikhoan` (`maTaiKhoan`, `password`, `IDChucVu`, `comment`, `maTruong`) VALUES (NULL, MD5('1111'), '$chucVu', '1111', '$maTruong')");
+        $sql = "INSERT INTO `giaovien` (`tenGiaoVien`,`ngaySinh`, `gioiTinh`, `diaChi`, `CCCD`, `email`, `SDT`, `maTaiKhoan`, `maTruong`) VALUES ('$tenGiaoVien','$ngaySinh', b'$gioiTinh', '$diaChi', '$CCCD', '$email', '$SDT', '$maTaiKhoan', '$maTruong')";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+
+    // Thêm Học Sinh
+    public function themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        mysqli_query($connectDB->connect, "INSERT INTO `taikhoan` (`maTaiKhoan`, `password`, `IDChucVu`, `comment`, `maTruong`) VALUES (NULL, MD5('1111'), '$chucVu', '1111', '$maTruong')");
+        $sql = "INSERT INTO `hocsinh` (`tenHocSinh`,`ngaySinh`, `gioiTinh`, `diaChi`, `CCCD`, `email`, `SDT`, `maTaiKhoan`, `maTruong`) VALUES ('$tenHocSinh','$ngaySinh', b'$gioiTinh', '$diaChi', '$CCCD', '$email', '$SDT', '$maTaiKhoan', '$maTruong')";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Thêm Quan Tri Truong
+    public function themQuanTriTruong($maTaiKhoan, $tenNguoiQuanTri, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        mysqli_query($connectDB->connect, "INSERT INTO `taikhoan` (`maTaiKhoan`, `password`, `IDChucVu`, `comment`, `maTruong`) VALUES (NULL, MD5('1111'), '$chucVu', '1111', '$maTruong')");
+        $sql = "INSERT INTO `quantritruong` (`tenNguoiQuanTri`,`ngaySinh`, `gioiTinh`, `diaChi`, `CCCD`, `email`, `SDT`, `maTaiKhoan`, `maTruong`) VALUES ('$tenNguoiQuanTri','$ngaySinh', b'$gioiTinh', '$diaChi', '$CCCD', '$email', '$SDT', '$maTaiKhoan', '$maTruong')";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Xem Tài Khoản chưa có người dùng cuoi cung
+    public function xemTaiKhoanCuoiCung()
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `taikhoan` ORDER BY `maTaiKhoan` DESC  LIMIT 1";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem tat ca cac mon hoc
+    public function xemTatCaCacMonCoTrongHeThong()
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `monhoc`";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Xoa Tai Khoan
+    // public function themQuanTriTruong($maTaiKhoan, $tenNguoiQuanTri, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    // {
+    //     $connectDB = new database();
+    //     $connectDB->connectDatabase();
+    //     mysqli_query($connectDB->connect, "INSERT INTO `taikhoan` (`maTaiKhoan`, `password`, `IDChucVu`, `comment`, `maTruong`) VALUES (NULL, MD5('1111'), '$chucVu', '1111', '$maTruong')");
+    //     $sql = "INSERT INTO `quantritruong` (`tenNguoiQuanTri`,`ngaySinh`, `gioiTinh`, `diaChi`, `CCCD`, `email`, `SDT`, `maTaiKhoan`, `maTruong`) VALUES ('$tenNguoiQuanTri','$ngaySinh', b'$gioiTinh', '$diaChi', '$CCCD', '$email', '$SDT', '$maTaiKhoan', '$maTruong')";
+    //     $result = mysqli_query($connectDB->connect, $sql);
+    //     $connectDB->closeDatabase();
+    //     return $result;
+    // }
 }
