@@ -88,44 +88,49 @@
             </div>
             <div class="col py-3">
                 <form class="row g-3">
-                    <h3 class="text__center col-md-12" style="text-align: center;">Tạo bài kiểm tra môn Toán</h3>
+                    <h3 class="text__center col-md-12" style="text-align: center;">Duyệt Câu Hỏi</h3>
                     <div class="col-md-6">
-                        <label for="inputTimel4" class="form-label">Thời gian mở</label>
-                        <input type="datetime-local" class="form-control" id="inputTimel4">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="inputEndTime14" class="form-label">Thời gian kết thúc</label>
-                        <input type="datetime-local" class="form-control" id="inputEndTime14">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="inputState" class="form-label">Chọn hình thức kiểm tra</label>
-                        <select id="inputState" class="form-select">
-                            <option selected>Bài kiểm tra 15 phút</option>
-                            <option selected>Bài kiểm tra 45 phút</option>
-                            <option selected>Bài tập</option>
+                        <label for="selectClassDoKho" class="form-label">Độ Khó</label>
+                        <select id="selectClassDoKho" class="form-select">
+                            <option selected>1</option>
+                            <option selected>2</option>
+                            <option selected>3</option>
+                            <option selected>4</option>
                             <option selected>Chọn...</option>
                         </select>
                     </div>
-
-                    <div class="col-md-4">
-                        <label for="Quantityquestion" class="form-label">Số Lượng Câu Hỏi</label>
-                        <input type="number" class="form-control" id="Quantityquestion">
+                    <div class="col-md-6">
+                        <label for="selectClassChuong" class="form-label">Chương</label>
+                        <select id="selectClassChuong" class="form-select">
+                            <option selected>1</option>
+                            <option selected>2</option>
+                            <option selected>3</option>
+                            <option selected>4</option>
+                            <option selected>Chọn...</option>
+                        </select>
                     </div>
-                    <div class="col-md-4">
-                        <label for="numberofdoes" class="form-label">Thời gian làm bài</label>
-                        <input type="time" class="form-control"   id="numberofdoes">
+                    <div class="col-md-6">
+                        <label for="selectClass" class="form-label">Khối Lớp</label>
+                        <select id="selectClass" class="form-select">
+                            <option selected>Khối 6</option>
+                            <option selected>Khối 7</option>
+                            <option selected>Khối 8</option>
+                            <option selected>Khối 9</option>
+                            <option selected>Chọn...</option>
+                        </select>
                     </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn__confirm">Thêm câu hỏi</button>
+                    <div class="col-md-6">
+                        <label for="numberofdoes" class="form-label">Thời gian </label>
+                        <input type="time" class="form-control" name="timeForDuyet"  id="numberofdoes">
+                        </select>
                     </div>
-                </form>
-                <div class="heading__wrapper">
-                    <div class="heading-title">Chọn câu hỏi</div>
-                    <div class="heading__select">
-                        <label class="block-question__answer" for="check"> Chọn</label>
-                        <input type="checkbox" id="check" name="check" value="Chon">
-                    </div>
-                </div>
+                    <div class="heading__wrapper" style="margin-top: 200px;">
+                        <div class="heading-title">Chọn câu hỏi</div>
+                        <div class="heading__select">
+                            <label class="block-question__answer" for="check"> Chọn</label>
+                            <input type="checkbox" id="check" name="check" value="Chon">
+                        </div>
+                    </div>    
                 <div class="wid-row__full">
                     <div class="container__list-question" style="background-color: #F9F9F9;">
                         <div class="block-question">
@@ -169,7 +174,7 @@
                     </div>
                 </div>        
                 <div class="create__test-btn">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right; margin-bottom: 32px;">Tạo bài kiểm tra</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right; margin-bottom: 32px;">Duyệt câu hỏi</button>
                 </div>
 
                 <!-- Modal -->
@@ -196,26 +201,7 @@
 
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="modal-body__content">Bạn đã tạo thành công bài kiểm tra môn Toán</p>
-                    <p class="modal-body__content">Mã Đề 01</p>
-                    <p class="modal-body__content">........</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <footer id="footer">
         <div class="container">
             <div class="row">
