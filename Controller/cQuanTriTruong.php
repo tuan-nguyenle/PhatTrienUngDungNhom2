@@ -55,11 +55,23 @@ class quanTriTruong
         $modelQuanTriTruong = new mQuanTriTruong();
         return $modelQuanTriTruong->updateThongTinGiaoVien($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi);
     }
-    // Thêm Giáo Viên
-    public function themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    // thay doi thong tin HocSinh
+    public function updateThongTinHocSinh($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi)
     {
         $modelQuanTriTruong = new mQuanTriTruong();
-        return $modelQuanTriTruong->themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu);
+        return $modelQuanTriTruong->updateThongTinHocSinh($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi);
+    }
+    // thay doi thong tin quan Tri Truong
+    public function updateThongTinQuanTriTruong($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->updateThongTinQuanTriTruong($maTaiKhoan, $hoTen, $CCCD, $ngaySinh, $email, $SDT, $diaChi);
+    }
+    // Thêm Giáo Viên
+    public function themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu, $maMonHoc)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu, $maMonHoc);
     }
     // Thêm Học Sinh
     public function themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
@@ -84,5 +96,59 @@ class quanTriTruong
     {
         $modelQuanTriTruong = new mQuanTriTruong();
         return $modelQuanTriTruong->xemTatCaCacMonCoTrongHeThong();
+    }
+    // xóa giáo viên
+    public function xoaGiaoVien($maTaiKhoan)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->xoaGiaoVien($maTaiKhoan);
+    }
+    // xóa học sinh
+    public function xoaHocSinh($maTaiKhoan)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->xoaHocSinh($maTaiKhoan);
+    }
+    // xóa quản trị trường
+    public function xoaQuanTriTruong($maTaiKhoan)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->xoaQuanTriTruong($maTaiKhoan);
+    }
+    // lay thong tin giao vien trong truong theo ma truong
+    public function getAllGiaoVienTheoTruong($maTruong)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->getAllGiaoVienTheoTruong($maTruong);
+    }
+    // lay thong tin chi tiet giao vien trong truong theo ma truong
+    public function getChiTietGiaoVienTheoTruong($maGiaoVien, $maTruong)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->getChiTietGiaoVienTheoTruong($maGiaoVien, $maTruong);
+    }
+    // lay tat ca thong tin lop trong truong
+    public function getAllLopGiaoVienKhongDay($maGiaoVien, $maTruong)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->getAllLopGiaoVienKhongDay($maGiaoVien, $maTruong);
+    }
+    // lay thong tin lop Giao Vien Dam Nham trong truong theo ma truong
+    public function getChiTietLopGiaoVienDamNhamTheoTruong($maGiaoVien, $maTruong)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->getChiTietLopGiaoVienDamNhamTheoTruong($maGiaoVien, $maTruong);
+    }
+    // huy lop da phan cong
+    public function huyLopGiaoVienDaPhanCong($maGiaoVien, $arrayLopDamNhan)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->huyLopGiaoVienDaPhanCong($maGiaoVien, $arrayLopDamNhan);
+    }
+    // phan cong giao vien
+    public function phanCongGiaoVien($maGiaoVien, $arrayLopMuonThem)
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->phanCongGiaoVien($maGiaoVien, $arrayLopMuonThem);
     }
 }

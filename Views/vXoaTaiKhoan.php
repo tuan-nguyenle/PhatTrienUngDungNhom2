@@ -23,12 +23,45 @@
 </div>
 <?php
 if (isset($_REQUEST['xoaTaiKhoan']) && !empty($_REQUEST['maTaiKhoan'])) {
-    // $xoaMonHoc = $quanTriThanhPho->xoaMonHocMoiChoKhoi($_REQUEST['Khoi'], $_REQUEST['maMonHoc']);
-    // if ($xoaMonHoc) {
-    //     echo "<script>alert('Xóa thành công')</script>";
-    //     echo "<meta http-equiv='refresh' content='0;url=quanTriThanhPho.php?quanLiMonHoc&&Khoi=" . $_REQUEST['Khoi'] . "'>";
-    // } else {
-    //     echo "<script>alert('Xóa thất bại')</script>";
-    // }
+    switch ($_REQUEST['chucVu']) {
+        case '1':
+            $xoaNguoiDung = $quanTriTruong->xoaGiaoVien($_REQUEST['maTaiKhoan']);
+            if ($xoaNguoiDung) {
+                echo "<script>alert('Xóa thành công')</script>";
+                echo "<meta http-equiv='refresh' content='0;url=?quanLyTaiKhoan&&chucVu=" . $_REQUEST['chucVu'] . "'>";
+            } else {
+                echo "<script>alert('Xóa thất bại')</script>";
+            }
+            break;
+        case '2':
+            $xoaNguoiDung = $quanTriTruong->xoaGiaoVien($_REQUEST['maTaiKhoan']);
+            if ($xoaNguoiDung) {
+                echo "<script>alert('Xóa thành công')</script>";
+                echo "<meta http-equiv='refresh' content='0;url=?quanLyTaiKhoan&&chucVu=" . $_REQUEST['chucVu'] . "'>";
+            } else {
+                echo "<script>alert('Xóa thất bại')</script>";
+            }
+            break;
+        case '3':
+            $xoaNguoiDung = $quanTriTruong->xoaHocSinh($_REQUEST['maTaiKhoan']);
+            if ($xoaNguoiDung) {
+                echo "<script>alert('Xóa thành công')</script>";
+                echo "<meta http-equiv='refresh' content='0;url=?quanLyTaiKhoan&&chucVu=" . $_REQUEST['chucVu'] . "'>";
+            } else {
+                echo "<script>alert('Xóa thất bại')</script>";
+            }
+            break;
+        case '4':
+            $xoaNguoiDung = $quanTriTruong->xoaQuanTriTruong($_REQUEST['maTaiKhoan']);
+            if ($xoaNguoiDung) {
+                echo "<script>alert('Xóa thành công')</script>";
+                echo "<meta http-equiv='refresh' content='0;url=?quanLyTaiKhoan&&chucVu=" . $_REQUEST['chucVu'] . "'>";
+            } else {
+                echo "<script>alert('Xóa thất bại')</script>";
+            }
+            break;
+        default:
+            break;
+    }
 }
 ?>

@@ -46,19 +46,34 @@
                                     <option value="0" selected>Nữ</option>
                                 </select>
                             </div>
-                            <div class="form-group col-4">
+                            <div class="form-group col-3">
                                 <label for="maTaiKhoan">Mã Tài Khoản</label>
                                 <input type="text" id="taiKhoan" name="maTaiKhoan" class="form-control" value="<?= $tk = str_pad(mysqli_fetch_assoc($quanTriTruong->xemTaiKhoanCuoiCung())['maTaiKhoan'] + 1, 5, '0', STR_PAD_LEFT) ?>" disabled>
                             </div>
-                            <div class="form-group col-4">
+                            <div class="form-group col-3">
                                 <label for="chucVu">Chức Vụ</label>
-                                <select class="form-select" name="txtChucVu">
+                                <select class="form-select" name="txtChucVu" id="chucVu">
                                     <?php
                                     $allChucVu = $quanTriTruong->getAllChucVu();
                                     if ($allChucVu) {
                                         if (mysqli_num_rows($allChucVu) > 0) {
                                             while ($row = mysqli_fetch_assoc($allChucVu)) {
                                                 echo "<option value='" . $row['IDChucVu'] . "'>" . $row['MoTa'] . "</option>";
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-2 monHoc">
+                                <label for="boMon">Bộ Môn</label>
+                                <select class="form-select" name='txtBoMon' id='boMon'>
+                                    <?php
+                                    $allMonHoc = $quanTriTruong->xemTatCaCacMonCoTrongHeThong();
+                                    if ($allMonHoc) {
+                                        if (mysqli_num_rows($allMonHoc) > 0) {
+                                            while ($row = mysqli_fetch_assoc($allMonHoc)) {
+                                                echo "<option value='" . $row['maMonHoc'] . "'>" . $row['tenMonHoc'] . "</option>";
                                             }
                                         }
                                     }
@@ -76,7 +91,15 @@
         </div>
     </div>
 </div>
-
+<script>
+    $("#chucVu").change(function(event) {
+        if ($('select#chucVu').find('option:selected').val() == 3 || $('select#chucVu').find('option:selected').val() == 4) {
+            $('.monHoc').hide();
+        } else {
+            $('.monHoc').show();
+        }
+    });
+</script>
 <?php
 if (isset($_REQUEST['themNguoiDungMoi'])) {
     $thongBaoLoi = array();
@@ -106,7 +129,8 @@ if (isset($_REQUEST['themNguoiDungMoi'])) {
     }
     if (empty($thongBaoLoi)) {
         if ($_REQUEST['txtChucVu'] == 1 || $_REQUEST['txtChucVu'] == 2) {
-            $insertGiaoVien = $quanTriTruong->themGiaoVien($tk, $_REQUEST['txtTen'], $_REQUEST['txtCCCD'], $_REQUEST['txtNgaySinh'], $_REQUEST['txtEmail'], $_REQUEST['txtSDT'], $_REQUEST['txtDiaChi'], $_REQUEST['sex'], $thongTinTruong['maTruong'], $_REQUEST['txtChucVu']);
+            echo "<script>alert(" . $_REQUEST['txtBoMon'] . ")</script>";
+            $insertGiaoVien = $quanTriTruong->themGiaoVien($tk, $_REQUEST['txtTen'], $_REQUEST['txtCCCD'], $_REQUEST['txtNgaySinh'], $_REQUEST['txtEmail'], $_REQUEST['txtSDT'], $_REQUEST['txtDiaChi'], $_REQUEST['sex'], $thongTinTruong['maTruong'], $_REQUEST['txtChucVu'], $_REQUEST['txtBoMon']);
             if ($insertGiaoVien) {
                 echo "<script>alert('Thêm Thành Công')</script>";
                 echo "<meta http-equiv='refresh' content='0;url=index.php?quanLyTaiKhoan&&chucVu=" . $_REQUEST['chucVu'] . "'>";

@@ -164,7 +164,7 @@ class mGiaoVien
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
-        $sql = "INSERT INTO `ngạnhangcauhoitracnghiem` (`maCauHoi`, `maMonHoc`, `maKhoi`, `chuong`, `cauHoi`, `doKho`, `trangThai`, `dapAnA`, `dapAnB`, `dapAnC`, `dapAnD`, `dapAnDung`) VALUES (NULL,'$mamonHoc', '$maKhoi','$chuong','$cauHoi','$doKho', b'0','$dapAnA','$dapAnB','$dapAnC','$dapAnD','$dapAnDung')";
+        $sql = "INSERT INTO `nganhangcauhoitracnghiem` (`maCauHoi`, `maMonHoc`, `maKhoi`, `chuong`, `cauHoi`, `doKho`, `trangThai`, `dapAnA`, `dapAnB`, `dapAnC`, `dapAnD`, `dapAnDung`) VALUES (NULL,'$mamonHoc', '$maKhoi','$chuong','$cauHoi','$doKho', b'0','$dapAnA','$dapAnB','$dapAnC','$dapAnD','$dapAnDung')";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;

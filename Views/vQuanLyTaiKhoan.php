@@ -18,16 +18,15 @@
                 }
                 ?>
             </select>
-            <div class="container-fluid">
-                <!--               <a class="navbar-brand" href="#">Navbar</a>
-             --> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse navbar-center" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
-                    </div>
+            <div class="col-2" style="padding-left: 15px;padding-right: 15px">
+                <div class="navbar-nav">
+                    <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
                 </div>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary">
+                    <a href="?phanCongGiaoVien" style="color:white;text-decoration: none;">Phân Công</a>
+                </button>
             </div>
         </nav>
     </div>
@@ -43,13 +42,18 @@
                     <th scope="col">Họ và tên</th>
                     <th scope="col">Email</th>
                     <th scope="col">Địa Chỉ</th>
+                    <?php
+                    if (isset($_REQUEST['chucVu']) and ($_REQUEST['chucVu'] == 1 || $_REQUEST['chucVu'] == 2)) {
+                        echo "<th scope='col'>Bộ Môn</th>";
+                    }
+                    ?>
                     <th scope="col">Số Điện Thoại</th>
                     <th scope="col">Tùy chỉnh</th>
                 </tr>
             </thead>
             <tbody id="tbody">
                 <?php
-                if (isset($_REQUEST['chucVu']) and $_REQUEST['chucVu'] <= 5) {
+                if (isset($_REQUEST['chucVu']) and $_REQUEST['chucVu'] <= 4) {
                     switch ($_REQUEST['chucVu']) {
                         case '1':
                             $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuToTruong();
@@ -62,9 +66,6 @@
                             break;
                         case '4':
                             $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuQuanTriTruong();
-                            break;
-                        case '5':
-                            $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuQuanTriThanhPho();
                             break;
                         default:
                             $thongTinTaiKhoan = $quanTriTruong->getAllUserByChucVuToTruong();
@@ -83,16 +84,20 @@
                             <td><?= $ds['ten'] ?></td>
                             <td><?= $ds['email'] ?></td>
                             <td><?= $ds['diaChi'] ?></td>
+                            <?php
+                            if (isset($_REQUEST['chucVu']) and ($_REQUEST['chucVu'] == 1 || $_REQUEST['chucVu'] == 2)) {
+                                echo "<td>" . $ds['tenMonHoc'] . "</td>";
+                            }
+                            ?>
                             <td><?= $ds['SDT'] ?></td>
                             <td>
-                                <?php if ($_REQUEST['chucVu'] == 2 or $_REQUEST['chucVu'] == 1) { ?>
-                                    <button type="button" class="btn btn-warning">
-                                        <a style="text-decoration: none;" href="#editGV" class="edit text-black" data-toggle="modal">
-                                            <i class="material-icons updateGV" data-toggle="tooltip" data-id="<?= $ds['maTaiKhoan'] ?>" data-CCCDGV="<?= $ds['CCCD'] ?>" data-ngaySinhGV="<?= $ds['ngaySinh'] ?>" data-tenGV="<?= $ds['ten'] ?>" data-emailGV="<?= $ds['email'] ?>" data-SDTGV="<?= $ds['SDT'] ?>" data-diaChiGV="<?= $ds['diaChi'] ?>" title="Edit">Chỉnh Sửa</i>
-                                        </a></button>
-                                <?php } ?>
+                                <button type="button" class="btn btn-warning">
+                                    <a style="text-decoration: none;" href="#editUser" class="edit text-black" data-toggle="modal">
+                                        <i class="material-icons updateUser" data-toggle="tooltip" data-id="<?= $ds['maTaiKhoan'] ?>" data-CCCDUser="<?= $ds['CCCD'] ?>" data-ngaySinhUser="<?= $ds['ngaySinh'] ?>" data-tenUser="<?= $ds['ten'] ?>" data-emailUser="<?= $ds['email'] ?>" data-SDTUser="<?= $ds['SDT'] ?>" data-diaChiUser="<?= $ds['diaChi'] ?>" title="Edit">Sửa</i>
+                                    </a>
+                                </button>
                                 <button type="button" class="xoaTaiKhoan btn btn-danger" data-toggle="modal" data-target="#xoa" data-id="<?= $ds['maTaiKhoan'] ?>">
-                                    Xoá Tài Khoản
+                                    Xoá
                                 </button>
                             </td>
                         </tr>
@@ -101,9 +106,7 @@
                 }
                 include_once './Views/vThemNguoiDung.php';
                 include_once './Views/vXoaTaiKhoan.php';
-                if ($_REQUEST['chucVu'] == 2 or $_REQUEST['chucVu'] == 1) {
-                    include_once './Views/vChinhSuaGiaoVien.php';
-                }
+                include_once './Views/vChinhSuaTaiKhoan.php';
                 ?>
             </tbody>
         </table>

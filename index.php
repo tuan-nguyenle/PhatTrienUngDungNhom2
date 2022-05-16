@@ -275,6 +275,9 @@ if (isset($_SESSION['LoginSuccess'])) {
                 if (isset($_REQUEST['quanLyTaiKhoan'])) {
                     include_once './Views/vMenu.php';
                     include_once './Views/vQuanLyTaiKhoan.php';
+                } elseif (isset($_REQUEST['phanCongGiaoVien'])) {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vPhanCongGiaoVien.php';
                 } else {
                     include_once './Views/vMenu.php';
                     include_once './Views/vHomePage.php';
@@ -298,22 +301,22 @@ if (isset($_SESSION['LoginSuccess'])) {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-        // Update GV
-        $(document).on("click", ".updateGV", function(e) {
-            var maTaiKhoanGV = $(this).attr("data-id");
-            var tenGV = $(this).attr("data-tenGV");
-            var emailGV = $(this).attr("data-emailGV");
-            var SDTGV = $(this).attr("data-SDTGV");
-            var diaChiGV = $(this).attr("data-diaChiGV");
-            var CCCDGV = $(this).attr("data-CCCDGV");
-            var ngaySinhGv = $(this).attr("data-ngaySinhGV");
-            $("#maTaiKhoanGV").val(maTaiKhoanGV);
-            $("#tenGV").val(tenGV);
-            $("#CCCDGV").val(CCCDGV);
-            $("#ngaySinhGv").val(ngaySinhGv);
-            $("#emailGV").val(emailGV);
-            $("#SDTGV").val(SDTGV);
-            $("#diaChiGV").val(diaChiGV);
+        // Update User
+        $(document).on("click", ".updateUser", function(e) {
+            var maTaiKhoanUser = $(this).attr("data-id");
+            var tenUser = $(this).attr("data-tenUser");
+            var emailUser = $(this).attr("data-emailUser");
+            var SDTUser = $(this).attr("data-SDTUser");
+            var diaChiUser = $(this).attr("data-diaChiUser");
+            var CCCDUser = $(this).attr("data-CCCDUser");
+            var ngaySinhUser = $(this).attr("data-ngaySinhUser");
+            $("#maTaiKhoanUser").val(maTaiKhoanUser);
+            $("#tenUser").val(tenUser);
+            $("#CCCDUser").val(CCCDUser);
+            $("#ngaySinhUser").val(ngaySinhUser);
+            $("#emailUser").val(emailUser);
+            $("#SDTUser").val(SDTUser);
+            $("#diaChiUser").val(diaChiUser);
         });
         // xoa Nguoi Dung
         $(document).on("click", ".xoaTaiKhoan", function(e) {
