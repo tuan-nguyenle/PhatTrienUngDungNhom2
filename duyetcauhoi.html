@@ -89,7 +89,7 @@
             <div class="col py-3">
                 <form class="row g-3">
                     <h3 class="text__center col-md-12" style="text-align: center;">Duyệt Câu Hỏi</h3>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="selectClassDoKho" class="form-label">Độ Khó</label>
                         <select id="selectClassDoKho" class="form-select">
                             <option selected>1</option>
@@ -99,7 +99,7 @@
                             <option selected>Chọn...</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="selectClassChuong" class="form-label">Chương</label>
                         <select id="selectClassChuong" class="form-select">
                             <option selected>1</option>
@@ -109,7 +109,7 @@
                             <option selected>Chọn...</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="selectClass" class="form-label">Khối Lớp</label>
                         <select id="selectClass" class="form-select">
                             <option selected>Khối 6</option>
@@ -120,14 +120,18 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="numberofdoes" class="form-label">Thời gian </label>
-                        <input type="datetime" class="form-control" name="timeForDuyet" id="numberofdoes">
+                        <label for="timeline1" class="form-label">Thời gian từ </label>
+                        <input type="date" class="form-control" name="timeFrom" id="timeline1">
                         </select>
                     </div>
                     <div class="col-md-6">
+                        <label for="timeline2" class="form-label">Thời gian đến </label>
+                        <input type="date" class="form-control" name="timeTo" id="timeline2">
+                        </select>
                     </div>
-                    <div class="col-md-6">
-                            <button style="float: right;" class="btn btn-primary" name="btn-fill">Lọc câu hỏi </button>
+                    
+                    <div class="col-md-12">
+                            <button style="width:100%;" class="btn btn-primary" name="btn-fill">Lọc câu hỏi </button>
                     </div>
                     <div class="heading__wrapper" style="margin-top: 200px;">
                         <div class="heading-title">Chọn câu hỏi</div>
