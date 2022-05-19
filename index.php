@@ -185,36 +185,18 @@ if (isset($_SESSION['LoginSuccess'])) {
         switch ($_SESSION['IDChucVu']) {
             case '1':
                 if (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
-                    include_once './Views/vMenu.php';
-                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                    include_once './Views/vSidebar.php';
                     include_once './Views/vChiTietDiemHocSinh.php';
-                    echo "</div></div>";
                 } elseif (isset($_GET['taoBaiKiemTra'])) {
-                    include_once './Views/vMenu.php';
-                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                    include_once './Views/vSidebar.php';
                     include_once './Views/vTaoBaiKiemTra.php';
-                    echo "</div></div>";
                 } elseif (isset($_GET['taoCauHoi'])) {
-                    include_once './Views/vMenu.php';
-                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                    include_once './Views/vSidebar.php';
                     include_once './Views/vTaoCauHoi.php';
-                    echo "</div></div>";
+                } elseif (isset($_GET['duyetCauHoi'])) {
+                    include_once './Views/vDuyetCauHoi.php';
                 } elseif (isset($_GET['dsachlop'])) {
                     if ($_GET['dsachlop'] != null) {
-                        include_once './Views/vMenu.php';
-                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                        include_once './Views/vSidebar.php';
                         include_once './Views/vDanhSachLop.php';
-                        echo "</div></div>";
                     } else {
-                        include_once './Views/vMenu.php';
-                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                        include_once './Views/vSidebar.php';
                         include_once './Views/vDanhSachLopDamNhan.php';
-                        echo "</div></div>";
                     }
                 } else {
                     include_once './Views/vMenu.php';
@@ -223,36 +205,16 @@ if (isset($_SESSION['LoginSuccess'])) {
                 break;
             case '2':
                 if (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
-                    include_once './Views/vMenu.php';
-                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                    include_once './Views/vSidebar.php';
                     include_once './Views/vChiTietDiemHocSinh.php';
-                    echo "</div></div>";
                 } elseif (isset($_GET['taoBaiKiemTra'])) {
-                    include_once './Views/vMenu.php';
-                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                    include_once './Views/vSidebar.php';
                     include_once './Views/vTaoBaiKiemTra.php';
-                    echo "</div></div>";
                 } elseif (isset($_GET['taoCauHoi'])) {
-                    include_once './Views/vMenu.php';
-                    echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                    include_once './Views/vSidebar.php';
                     include_once './Views/vTaoCauHoi.php';
-                    echo "</div></div>";
                 } elseif (isset($_GET['dsachlop'])) {
                     if ($_GET['dsachlop'] != null) {
-                        include_once './Views/vMenu.php';
-                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                        include_once './Views/vSidebar.php';
                         include_once './Views/vDanhSachLop.php';
-                        echo "</div></div>";
                     } else {
-                        include_once './Views/vMenu.php';
-                        echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-                        include_once './Views/vSidebar.php';
                         include_once './Views/vDanhSachLopDamNhan.php';
-                        echo "</div></div>";
                     }
                 } else {
                     include_once './Views/vMenu.php';

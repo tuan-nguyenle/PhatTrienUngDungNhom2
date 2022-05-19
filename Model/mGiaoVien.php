@@ -169,4 +169,34 @@ class mGiaoVien
         $connectDB->closeDatabase();
         return $result;
     }
+    // xem số lượng các câu hỏi chưa duyệt
+    public function getSoLuongCauHoiChuaDuyet($maTruong, $mamonHoc, $maKhoi, $chuong, $doKho, $date)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT count(*) AS soLuong FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '0' AND `maTruong`='$maTruong' AND `maMonHoc` = '$mamonHoc' AND `maKhoi` = '$maKhoi' AND `chuong` = '$chuong' AND `doKho`='$doKho' AND `ngayTao` >= '$date'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem tất cả câu hỏi chưa duyệt
+    public function xemTatCaCauhoiChuaDuyet($maTruong, $mamonHoc, $maKhoi, $chuong, $doKho, $date, $start, $limit)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '0' AND `maTruong`='$maTruong' AND `maMonHoc` = '$mamonHoc' AND `maKhoi` = '$maKhoi' AND `chuong` = '$chuong' AND `doKho`='$doKho' AND `ngayTao` >= '$date' LIMIT $start,$limit";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Duyệt câu hỏi
+    public function duyetCauHoi($listCauHoi)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "UPDATE `nganhangcauhoitracnghiem` SET `trangThai`= b'1' WHERE `maCauHoi` IN ('" . implode("','", $listCauHoi) . "')";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
 }

@@ -122,4 +122,24 @@ class giaoVien
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->taoCauHoiTracNghiem($this->getMaMonHoc(), $maKhoi, $chuong, $cauHoi, $doKho, $dapAnA, $dapAnB, $dapAnC, $dapAnD, $dapAnDung);
     }
+    // xem số lượng các câu hỏi chưa duyệt
+    public function getSoLuongCauHoiChuaDuyet($maKhoi, $chuong, $doKho, $date)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getSoLuongCauHoiChuaDuyet($this->maTruong, $this->getMaMonHoc(), $maKhoi, $chuong, $doKho, $date);
+    }
+    // Xem tất cả các câu hỏi chưa được duyệt
+    public function xemTatCaCauhoiChuaDuyet($maKhoi, $chuong, $doKho, $date, $start, $limit)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->xemTatCaCauhoiChuaDuyet($this->maTruong, $this->getMaMonHoc(), $maKhoi, $chuong, $doKho, $date, $start, $limit);
+    }
+    // Duyệt câu hỏi
+    public function duyetCauHoi($listCauHoi)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        echo "<script>alert('hi)</script>";
+
+        return $modelGiaoVien->duyetCauHoi($listCauHoi);
+    }
 }
