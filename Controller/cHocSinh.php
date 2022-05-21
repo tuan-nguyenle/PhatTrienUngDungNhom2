@@ -95,11 +95,18 @@ class hocSinh
         $dangHoc = $modelHocSinh->getCacMonDangHoc($this->getMaHocSinh());
         return $dangHoc;
     }
-    // lay cac bai kiểm tra
-    public function getCacBaiKiemTra($maMonHoc)
+    // lay cac bai kiểm tra Tu luan
+    public function getCacBaiKiemTraTuLuan($maMonHoc)
     {
         $modelHocSinh = new mHocSinh();
-        $dangHoc = $modelHocSinh->getCacBaiKiemTra($this->getMaHocSinh(), $maMonHoc);
+        $dangHoc = $modelHocSinh->getCacBaiKiemTraTuLuan($this->getMaHocSinh(), $maMonHoc);
+        return $dangHoc;
+    }
+    // lay cac bai kiểm tra TracNghiem
+    public function getCacBaiKiemTraTracNghiem($maMonHoc)
+    {
+        $modelHocSinh = new mHocSinh();
+        $dangHoc = $modelHocSinh->getCacBaiKiemTraTracNghiem($this->getMaHocSinh(), $maMonHoc);
         return $dangHoc;
     }
     // get thong tin de kiem tra
@@ -107,6 +114,13 @@ class hocSinh
     {
         $modelHocSinh = new mHocSinh();
         $de = $modelHocSinh->getThongTinBaiKiemTraTuLuan($maDe);
+        return $de;
+    }
+    // get thong tin de kiem tra trac Nghiem
+    public function getThongTinBaiKiemTraTracNghiem($maDe)
+    {
+        $modelHocSinh = new mHocSinh();
+        $de = $modelHocSinh->getThongTinBaiKiemTraTracNghiem($maDe);
         return $de;
     }
     // nop bai kiem tra
@@ -129,5 +143,11 @@ class hocSinh
         $modelHocSinh = new mHocSinh();
         $fileUpdated = $modelHocSinh->xemBaiDaNop($maDe, $maHocSinh);
         return $fileUpdated;
+    }
+    // xem deim trac nghiem
+    public function xemDiemTracNghiem($maDe)
+    {
+        $modelHocSinh = new mHocSinh();
+        return $modelHocSinh->xemBaiDaNop($maDe, $this->getMaHocSinh());
     }
 }

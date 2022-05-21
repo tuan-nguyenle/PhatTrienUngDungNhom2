@@ -33,7 +33,7 @@
                 <ul class="list--info">
                     <?php
                     if (isset($_REQUEST['maMonHoc'])) {
-                        $baiKiemTraTuLuan = $hocSinh->getCacBaiKiemTra($_REQUEST['maMonHoc']);
+                        $baiKiemTraTuLuan = $hocSinh->getCacBaiKiemTraTuLuan($_REQUEST['maMonHoc']);
                         if ($baiKiemTraTuLuan) {
                             if (mysqli_num_rows($baiKiemTraTuLuan) > 0) {
                                 while ($row = mysqli_fetch_assoc($baiKiemTraTuLuan)) {
@@ -58,9 +58,24 @@
                 <h5 style="color:#C00">Bài Kiểm Tra Trắc Nghiệm </h5>
 
                 <ul class="list--info">
-                    <li><a href=""> Sức căng bề mặt(5/2/2022) </a></li>
-                    <li><a href=""> Quang học (10/2/2022) </a></li>
-                    <li><a href=""> Nhiệt học (1/2/2022) </a></li>
+                    <?php
+                    if (isset($_REQUEST['maMonHoc'])) {
+                        $baiKiemTraTracNghiem = $hocSinh->getCacBaiKiemTraTracNghiem($_REQUEST['maMonHoc']);
+                        if ($baiKiemTraTracNghiem) {
+                            if (mysqli_num_rows($baiKiemTraTracNghiem) > 0) {
+                                while ($row = mysqli_fetch_assoc($baiKiemTraTracNghiem)) {
+                                    if ($_REQUEST['maMonHoc']) {
+                    ?>
+                                        <li><a href="?lamBaiTracNghiem&&maDe=<?= $row['maDe'] ?>"> <?= $row['tenDe'] ?>/<?= $row['moTa'] ?></a></li>
+                    <?php
+                                    }
+                                }
+                            } else {
+                                echo 'Không có bài tập';
+                            }
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

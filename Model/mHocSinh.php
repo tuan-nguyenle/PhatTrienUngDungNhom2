@@ -119,8 +119,8 @@ class mHocSinh
         $connectDB->closeDatabase();
         return $result;
     }
-    // get tât ca mon kiem tra
-    public function getCacBaiKiemTra($maHocSinh, $maMonHoc)
+    // get tât ca mon kiem tra TuLuan
+    public function getCacBaiKiemTraTuLuan($maHocSinh, $maMonHoc)
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
@@ -135,12 +135,33 @@ class mHocSinh
         $connectDB->closeDatabase();
         return $result;
     }
+    // get tât ca mon kiem tra TracNghiem
+    public function getCacBaiKiemTraTracNghiem($maHocSinh, $maMonHoc)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT DISTINCT `de`.`tenDe`,`de`.`maDe`,`loaide`.`moTa` FROM `chitietdekiemtratracnghiem` INNER JOIN `de` ON `chitietdekiemtratracnghiem`.`maDe`=`de`.`maDe` INNER JOIN `loaide` ON `de`.`maLoaiDe` = `loaide`.`maLoaiDe` INNER JOIN `lop` ON `de`.`maLop`=`lop`.`maLop` INNER JOIN `chitietlop` ON `lop`.`maLop`=`chitietlop`.`maLop` INNER JOIN `hocsinh` ON `chitietlop`.`maHocSinh` = `hocsinh`.`maHocSinh`
+        WHERE `hocsinh`.`maHocSinh` = '$maHocSinh' AND `maMonHoc`= '$maMonHoc'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
     // get thong tin de kiem tra
     public function getThongTinBaiKiemTraTuLuan($maDe)
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
         $sql = "SELECT * FROM `de` INNER JOIN `detuluan` ON `de`.`maDe`=`detuluan`.`maDe` INNER JOIN `monhoc` ON `de`.`maMonHoc`=`monhoc`.`maMonHoc` INNER JOIN `loaide` ON `loaide`.`maLoaiDe` = `de`.`maLoaiDe` WHERE `de`.`maDe`='$maDe'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // get thong tin de kiem tra trac Nghiem
+    public function getThongTinBaiKiemTraTracNghiem($maDe)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `de` INNER JOIN `monhoc` ON `de`.`maMonHoc`=`monhoc`.`maMonHoc` INNER JOIN `loaide` ON `loaide`.`maLoaiDe` = `de`.`maLoaiDe` WHERE `de`.`maDe`='$maDe'";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;
@@ -172,6 +193,16 @@ class mHocSinh
         $connectDB = new database();
         $connectDB->connectDatabase();
         $sql = "SELECT * FROM `file` INNER JOIN `de` ON `file`.`maDe`=`de`.`maDe` WHERE `file`.`maHocSinh` = '$maHocSinh' AND `file`.`maDe`='$maDe'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem Diem TracNghiem
+    public function xemDiemTracNghiem($maDe, $maHocSinh)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `diemlambai` WHERE `diemlambai`.`maHocSinh` = '$maHocSinh' AND `diemlambai`.`maDe`='$maDe'";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;
