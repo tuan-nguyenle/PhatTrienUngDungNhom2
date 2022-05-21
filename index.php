@@ -186,6 +186,8 @@ if (isset($_SESSION['LoginSuccess'])) {
             case '1':
                 if (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
                     include_once './Views/vChiTietDiemHocSinh.php';
+                } elseif (isset($_GET['btnThemCauHoi'])) {
+                    include_once './Views/vCauHoiDaDuyet.php';
                 } elseif (isset($_GET['taoBaiKiemTra'])) {
                     include_once './Views/vTaoBaiKiemTra.php';
                 } elseif (isset($_GET['taoCauHoi'])) {

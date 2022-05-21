@@ -44,7 +44,7 @@
                     // $maKhoi, $chuong, $doKho, $date
                     include_once './Controller/phanTrang.php';
                     if (empty($_POST['cbDoKho']) or empty($_POST['txtChuong']) or empty($_POST['thoiGian'])) {
-                        $soLuongCauHoi = mysqli_fetch_assoc($giaoVien->getSoLuongCauHoiChuaDuyet(1, 1, 1, '2022-05-10'))['soLuong'];
+                        $soLuongCauHoi = mysqli_fetch_assoc($giaoVien->getAllSoLuongCauHoiChuaDuyet())['soLuong'];
                     } else {
                         $soLuongCauHoi = mysqli_fetch_assoc($giaoVien->getSoLuongCauHoiChuaDuyet($_POST['cbKhoi'], $_POST['txtChuong'], $_POST['cbDoKho'], $_POST['thoiGian']))['soLuong'];
                     }
@@ -59,18 +59,17 @@
                     );
                     $start = ($config['current_page'] - 1) * $config['limit'];
                     if (empty($_POST['cbDoKho']) or empty($_POST['cbKhoi']) or empty($_POST['txtChuong']) or empty($_POST['thoiGian'])) {
-                        $getAllCauHoi = $giaoVien->xemTatCaCauhoiChuaDuyet(1, 1, 1, '2022-05-10', $start, $config['limit']);
+                        $getAllCauHoi = $giaoVien->xemTatCaCacCauhoiChuaDuyet($start, $config['limit']);
                     } else {
                         $getAllCauHoi = $giaoVien->xemTatCaCauhoiChuaDuyet($_POST['cbKhoi'], $_POST['txtChuong'], $_POST['cbDoKho'], $_POST['thoiGian'], $start, $config['limit']);
                     }
                     $paging = new Pagination($config);
-                    $i = 1;
                     while ($listCauHoi = mysqli_fetch_assoc($getAllCauHoi)) {
                     ?>
                         <div class="wid-row__full">
                             <div class="container__list-question" style="background-color: #F9F9F9;">
                                 <div class="block-question">
-                                    <div class="block-question__heading mb-2"><span><?= "Câu " . $i . ": " . $listCauHoi['cauHoi'] ?></span>
+                                    <div class="block-question__heading mb-2"><span><?= "Câu " . $listCauHoi['maCauHoi'] . ": " . $listCauHoi['cauHoi'] ?></span>
                                     </div>
                                     <ul>
                                         <li>
@@ -96,7 +95,6 @@
                             </div>
                         </div>
                     <?php
-                        $i++;
                     }
                     ?>
                     <div class="create__test-btn">
@@ -119,6 +117,7 @@
             echo "<meta http-equiv='refresh' content='0;url=index.php?duyetCauHoi'>";
         } else {
             echo "<script>alert('Duyệt Thất Bại)</script>";
+            echo "<meta http-equiv='refresh' content='0;url=index.php?duyetCauHoi'>";
         }
     }
     ?>

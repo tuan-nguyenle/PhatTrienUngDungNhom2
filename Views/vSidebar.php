@@ -22,7 +22,7 @@
             <li>
                 <a href="?taoBaiKiemTra" class="nav-link px-0 align-middle">
                     <i class="fas fa-plus-square"></i> <span class="ms-1 d-none d-sm-inline">Tạo bài kiểm
-                        tra</span>
+                        tra Trắc nghiệm</span>
                 </a>
             </li>
             <?php if ($_SESSION['IDChucVu'] == 1) {

@@ -146,7 +146,7 @@
     {
         $p = '';
         if ($this->_config['total_record'] > $this->_config['limit']) {
-            $p = '<ul class="pagination">';
+            $p = '<div class="d-flex align-items-center justify-content-center"><ul class="pagination">';
 
             // Nút prev và first
             if ($this->_config['current_page'] > 1) {
@@ -170,7 +170,7 @@
                 $p .= '<li class="page-item" ><a class="page-link" href="' . $this->__link($this->_config['total_page']) . '">Last</a></li>';
             }
 
-            $p .= '</ul>';
+            $p .= '</ul></div>';
         }
         return $p;
     }

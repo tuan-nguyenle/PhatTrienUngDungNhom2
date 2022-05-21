@@ -199,4 +199,107 @@ class mGiaoVien
         $connectDB->closeDatabase();
         return $result;
     }
+    // xem Tất cả số lượng các câu hỏi chưa duyệt theo mã trường
+    public function getAllSoLuongCauHoiChuaDuyet($maTruong)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT count(*) AS soLuong FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '0' AND `maTruong`='$maTruong'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Xem tất cả các câu hỏi chưa được duyệt theo mã trường
+    public function xemTatCaCacCauhoiChuaDuyet($maTruong, $start, $limit)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '0' AND `maTruong`='$maTruong' LIMIT $start,$limit";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Xem tất cả các câu hỏi được duyệt theo mã trường
+    public function xemTatCaCacCauhoiDaDuyet($maLop, $mamonHoc, $maTruong, $start, $limit)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '1' AND `maKhoi`=(SELECT `maKhoi` FROM `lop` WHERE `maLop`='$maLop') AND `maMonHoc`='$mamonHoc' AND `maTruong`='$maTruong' LIMIT $start,$limit";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem Tất cả số lượng các câu hỏi chưa duyệt theo mã trường
+    public function getAllSoLuongCauHoiDaDuyet($maLop, $mamonHoc, $maTruong)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT count(*) AS soLuong FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '1' AND `maKhoi`=(SELECT `maKhoi` FROM `lop` WHERE `maLop`='$maLop') AND `maMonHoc`='$mamonHoc' AND `maTruong`='$maTruong'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem Tất cả số các hình thức
+    public function getAllHinhThuc()
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `LoaiDe`";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem số lượng các câu hỏi da duyệt va loc
+    public function getSoLuongCauHoiDuyetAndLoc($maTruong, $maMonHoc, $maLop, $chuong, $doKho, $date)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT count(*) AS soLuong FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '1' AND `maTruong`='$maTruong' AND `maMonHoc` = '$maMonHoc' AND `maKhoi`=(SELECT `maKhoi` FROM `lop` WHERE `maLop`='$maLop') AND `chuong` = '$chuong' AND `doKho`='$doKho' AND `ngayTao` >= '$date'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem tất cả câu hỏi Da Duyet va loc
+    public function xemTatCaCauhoiDaDuyetAndLoc($maTruong, $mamonHoc, $maLop, $chuong, $doKho, $date, $start, $limit)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `nganhangcauhoitracnghiem` WHERE `trangThai` = '1' AND `maTruong`='$maTruong' AND `maMonHoc` = '$mamonHoc' AND `maKhoi`=(SELECT `maKhoi` FROM `lop` WHERE `maLop`='$maLop') AND `chuong` = '$chuong' AND `doKho`='$doKho' AND `ngayTao` >= '$date' LIMIT $start,$limit";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // xem chi tiết câu hỏi
+    public function selectChiTietCauHoi($maCauHoi)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `nganhangcauhoitracnghiem` WHERE `maCauHoi` = '$maCauHoi'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Them Bai Trac Nghiem
+    public function insertCauHoiBaiKiemTra($arrayCauHoi)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        foreach ($arrayCauHoi as $cauHoi) {
+            $sql = "INSERT INTO `chitietdekiemtratracnghiem`(`maDe`, `maCauHoi`) VALUES ((SELECT `de`.`maDe` FROM `de` ORDER BY `de`.`maDe` DESC LIMIT 0,1),'$cauHoi')";
+            $result = mysqli_query($connectDB->connect, $sql);
+        }
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // Them Bai Trac Nghiem
+    public function insertBaiKiemTraTracNghiem($tenDe, $ngayLam, $hanNop, $maMonHoc, $ThoiGianLam, $soCauHoi, $maLoaiDe, $maLop, $arrayCauHoi)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "INSERT INTO `de`(`tenDe`, `ngayLam`, `hanNop`, `maKhoi`, `maMonHoc`, `ThoiGianLam`,`soCauHoi`, `maLoaiDe`, `maLop`) VALUES ('$tenDe', '$ngayLam', '$hanNop', (SELECT `khoi`.`maKhoi` FROM `khoi` INNER JOIN `lop` ON `lop`.`maKhoi` = `khoi`.`maKhoi` WHERE `lop`.`maLop` ='$maLop'), '$maMonHoc', '$ThoiGianLam','$soCauHoi', '$maLoaiDe', '$maLop')";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $this->insertCauHoiBaiKiemTra($arrayCauHoi);
+        $connectDB->closeDatabase();
+        return $result;
+    }
 }

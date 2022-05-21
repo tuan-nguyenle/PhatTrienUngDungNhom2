@@ -122,24 +122,75 @@ class giaoVien
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->taoCauHoiTracNghiem($this->getMaMonHoc(), $maKhoi, $chuong, $cauHoi, $doKho, $dapAnA, $dapAnB, $dapAnC, $dapAnD, $dapAnDung);
     }
-    // xem số lượng các câu hỏi chưa duyệt
+    // xem số lượng các câu hỏi chưa duyệt da loc
     public function getSoLuongCauHoiChuaDuyet($maKhoi, $chuong, $doKho, $date)
     {
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->getSoLuongCauHoiChuaDuyet($this->maTruong, $this->getMaMonHoc(), $maKhoi, $chuong, $doKho, $date);
     }
-    // Xem tất cả các câu hỏi chưa được duyệt
+    // Xem tất cả các câu hỏi chưa được duyệt da loc
     public function xemTatCaCauhoiChuaDuyet($maKhoi, $chuong, $doKho, $date, $start, $limit)
     {
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->xemTatCaCauhoiChuaDuyet($this->maTruong, $this->getMaMonHoc(), $maKhoi, $chuong, $doKho, $date, $start, $limit);
     }
+    // xem Tất cả số lượng các câu hỏi chưa duyệt theo mã trường
+    public function getAllSoLuongCauHoiChuaDuyet()
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getAllSoLuongCauHoiChuaDuyet($this->maTruong);
+    }
+    // Xem tất cả các câu hỏi chưa được duyệt theo mã trường
+    public function xemTatCaCacCauhoiChuaDuyet($start, $limit)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->xemTatCaCacCauhoiChuaDuyet($this->maTruong, $start, $limit);
+    }
+    // Xem tất cả các câu hỏi chưa được duyệt theo mã trường và môn
+    public function xemTatCaCacCauhoiDaDuyet($maLop, $start, $limit)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->xemTatCaCacCauhoiDaDuyet($maLop, $this->getMaMonHoc(), $this->maTruong, $start, $limit);
+    }
+    // Xem Số lượng các câu hỏi chưa được duyệt theo mã trường
+    public function getAllSoLuongCauHoiDaDuyet($maLop)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getAllSoLuongCauHoiDaDuyet($maLop, $this->getMaMonHoc(), $this->maTruong);
+    }
     // Duyệt câu hỏi
     public function duyetCauHoi($listCauHoi)
     {
         $modelGiaoVien = new mGiaoVien();
-        echo "<script>alert('hi)</script>";
-
         return $modelGiaoVien->duyetCauHoi($listCauHoi);
+    }
+    // xem tất cả các hình thức
+    public function getAllHinhThuc()
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getAllHinhThuc();
+    }
+    // xem số lượng các câu hỏi da duyệt va loc
+    public function getSoLuongCauHoiDuyetAndLoc($maLop, $chuong, $doKho, $date)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getSoLuongCauHoiDuyetAndLoc($this->maTruong, $this->getMaMonHoc(), $maLop, $chuong, $doKho, $date);
+    }
+    public function xemTatCaCauhoiDaDuyetAndLoc($maLop, $chuong, $doKho, $date, $start, $limit)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->xemTatCaCauhoiDaDuyetAndLoc($this->maTruong, $this->getMaMonHoc(), $maLop, $chuong, $doKho, $date, $start, $limit);
+    }
+    // xem chi tiết câu hỏi
+    public function selectChiTietCauHoi($maCauHoi)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->selectChiTietCauHoi($maCauHoi);
+    }
+    // taoBaiKiemTra
+    public function insertBaiKiemTraTracNghiem($tenDe, $ngayLam, $hanNop, $ThoiGianLam, $soCauHoi, $maLoaiDe, $maLop, $arrayCauHoi)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->insertBaiKiemTraTracNghiem($tenDe, $ngayLam, $hanNop, $this->getMaMonHoc(), $ThoiGianLam, $soCauHoi, $maLoaiDe, $maLop, $arrayCauHoi);
     }
 }
