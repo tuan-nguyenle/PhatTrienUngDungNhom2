@@ -207,4 +207,14 @@ class mHocSinh
         $connectDB->closeDatabase();
         return $result;
     }
+    // xem cau hoi bai kiem tra
+    public function getChiTietDeKiemTraTracNghiem($maDe)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `chitietdekiemtratracnghiem` INNER JOIN `nganhangcauhoitracnghiem` ON `chitietdekiemtratracnghiem`.`maCauHoi`=`nganhangcauhoitracnghiem`.`maCauHoi` WHERE `chitietdekiemtratracnghiem`.`maDe` = '$maDe'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
 }

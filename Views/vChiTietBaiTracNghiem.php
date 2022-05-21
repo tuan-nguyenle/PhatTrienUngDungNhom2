@@ -38,7 +38,7 @@ if ($de) {
                 </tr>
                 </br>
             </table>
-            <form method="GET">
+            <form method="POST">
                 <div class="row">
                     <div class="col-12 justify-content-center text-center">
                         <?php

@@ -150,4 +150,10 @@ class hocSinh
         $modelHocSinh = new mHocSinh();
         return $modelHocSinh->xemBaiDaNop($maDe, $this->getMaHocSinh());
     }
+    // xem cau hoi bai kiem tra
+    public function getChiTietDeKiemTraTracNghiem($maDe)
+    {
+        $modelHocSinh = new mHocSinh();
+        return $modelHocSinh->getChiTietDeKiemTraTracNghiem($maDe);
+    }
 }
