@@ -53,8 +53,13 @@ if ($de) {
                         ?>
                             <button class="btn btn-primary m-2" name="btnLamBai" disabled>Chưa Đến Thời Gian</button>
                         <?php
+                        } elseif (mysqli_num_rows($diem) > 0) {
+                        ?>
+                            <button class="btn btn-primary m-2" name="btnLamBai" disabled>Đã Làm</button>
+                        <?php
                         } else {
                         ?>
+                            <input type="hidden" value="<?= date("Y-m-d H:i:s") ?>" name="thoiGianBamNutLamBai">
                             <input type="submit" class="btn btn-primary m-2" name="btnLamBai" value="Làm Bài">
                         <?php
                         }

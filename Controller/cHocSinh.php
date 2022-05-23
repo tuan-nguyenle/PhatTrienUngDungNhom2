@@ -148,12 +148,18 @@ class hocSinh
     public function xemDiemTracNghiem($maDe)
     {
         $modelHocSinh = new mHocSinh();
-        return $modelHocSinh->xemBaiDaNop($maDe, $this->getMaHocSinh());
+        return $modelHocSinh->xemDiemTracNghiem($maDe, $this->getMaHocSinh());
     }
     // xem cau hoi bai kiem tra
     public function getChiTietDeKiemTraTracNghiem($maDe)
     {
         $modelHocSinh = new mHocSinh();
         return $modelHocSinh->getChiTietDeKiemTraTracNghiem($maDe);
+    }
+    // Tinh Diem
+    public function tinhDiem($maDe, $diem)
+    {
+        $modelHocSinh = new mHocSinh();
+        return $modelHocSinh->tinhDiem($this->getMaHocSinh(), $maDe, $diem);
     }
 }

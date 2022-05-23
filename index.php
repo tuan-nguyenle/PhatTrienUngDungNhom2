@@ -227,7 +227,11 @@ if (isset($_SESSION['LoginSuccess'])) {
                 if (isset($_REQUEST['nopbai']) && ($_REQUEST['maDe'] != null)) {
                     include_once './Views/vMenu.php';
                     include_once './Views/vNopBaiTuLuan.php';
+                } elseif (isset($_REQUEST['vResult'])) {
+                    include_once './Views/vMenu.php';
+                    include_once './Views/vResult.php';
                 } elseif (isset($_REQUEST['btnLamBai'])) {
+                    include_once './Views/vMenu.php';
                     include_once './Views/vLamBaiTracNghiem.php';
                 } elseif (isset($_REQUEST['lamBaiTracNghiem'])) {
                     include_once './Views/vMenu.php';

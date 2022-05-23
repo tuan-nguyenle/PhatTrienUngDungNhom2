@@ -217,4 +217,14 @@ class mHocSinh
         $connectDB->closeDatabase();
         return $result;
     }
+    // tinh Diem
+    public function tinhDiem($maHocSinh, $maDe, $diem)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "INSERT INTO `diemlambai`(`maHocSinh`, `maDe`, `diem`) VALUES ('$maHocSinh','$maDe','$diem')";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
 }
