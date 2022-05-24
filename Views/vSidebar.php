@@ -25,6 +25,12 @@
                         tra Trắc nghiệm</span>
                 </a>
             </li>
+            <li>
+                <a href="?taoBaiKiemTraTuLuan" class="nav-link px-0 align-middle">
+                    <i class="fas fa-file-alt"></i> <span class="ms-1 d-none d-sm-inline">Tạo bài kiểm
+                        tra Tự Luận</span>
+                </a>
+            </li>
             <?php if ($_SESSION['IDChucVu'] == 1) {
             ?>
                 <li>

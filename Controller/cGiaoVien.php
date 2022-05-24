@@ -111,10 +111,10 @@ class giaoVien
         return $modelGiaoVien->getAllDanhSachLop($maLop);
     }
     // get Diem Cua Lop Theo Mon
-    public function getDiemLopTheoMon($maLop)
+    public function getDiemLopTheoMonVaDe($maLop, $maDe)
     {
         $modelGiaoVien = new mGiaoVien();
-        return $modelGiaoVien->getAllDiemHocSinhTheoMon($maLop, $this->getMaMonHoc());
+        return $modelGiaoVien->getDiemLopTheoMonVaDe($maLop, $this->getMaMonHoc(), $maDe);
     }
     // tao Cau Hoi
     public function taoCauHoiTracNghiem($maKhoi, $chuong, $cauHoi, $doKho, $dapAnA, $dapAnB, $dapAnC, $dapAnD, $dapAnDung)
@@ -192,5 +192,29 @@ class giaoVien
     {
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->insertBaiKiemTraTracNghiem($tenDe, $ngayLam, $hanNop, $this->getMaMonHoc(), $ThoiGianLam, $soCauHoi, $maLoaiDe, $maLop, $arrayCauHoi);
+    }
+    // taoBaiKiemTra
+    public function insertBaiKiemTraTuLuan($tenDe, $ngayLam, $hanNop, $ThoiGianLam, $maLoaiDe, $maLop, $cauHoiTuLuan)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->insertBaiKiemTraTuLuan($tenDe, $ngayLam, $hanNop, $this->getMaMonHoc(), $ThoiGianLam, $maLoaiDe, $maLop, $cauHoiTuLuan);
+    }
+    // lay de kiem tra da ra
+    public function getAllDeKiemTraDaRa($maLop)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getAllDeKiemTraDaRa($this->getMaMonHoc(), $maLop);
+    }
+    // get cac Hoc Sinh Chưa làm bài trong lớp
+    public function getHocSinhChuaLamBai($maLop, $maDe)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->getHocSinhChuaLamBai($this->getMaMonHoc(), $maLop, $maDe);
+    }
+    // Chấm Điểm
+    public function chamDiemBaiKiemTra($maHocSinh, $maDe, $diem)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->chamDiemBaiKiemTra($maHocSinh, $maDe, $diem);
     }
 }

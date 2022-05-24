@@ -6,15 +6,15 @@
                 <h3 class="text__center col-md-12" style="text-align: center;">Tạo bài kiểm tra môn <?= $giaoVien->getTenMon() ?></h3>
                 <div class="col-md-4">
                     <label for="txtTenDe" class="form-label">Tên Đề</label>
-                    <input type="text" class="form-control" name="txtTenDe" value="<?= isset($_SESSION['txtTenDe']) ? $_SESSION['txtTenDe'] : '' ?>">
+                    <input type="text" class="form-control" name="txtTenDe" value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['txtTenDe'] : '' ?>">
                 </div>
                 <div class="col-md-4">
                     <label for="timeStart" class="form-label">Thời gian mở</label>
-                    <input type="datetime-local" class="form-control" name="timeStart" value="<?= isset($_SESSION['timeStart']) ? $_SESSION['timeStart'] : '' ?>">
+                    <input type="datetime-local" class="form-control" name="timeStart" value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeStart'] : '' ?>">
                 </div>
                 <div class="col-md-4">
                     <label for="timeEnd" class="form-label">Thời gian kết thúc</label>
-                    <input type="datetime-local" class="form-control" name="timeEnd" value="<?= isset($_SESSION['timeEnd']) ? $_SESSION['timeEnd'] : '' ?>">
+                    <input type="datetime-local" class="form-control" name="timeEnd" value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeEnd'] : '' ?>">
                 </div>
                 <div class="col-md-3">
                     <label for="lopKiemTra" class="form-label">Lớp</label>
@@ -22,7 +22,7 @@
                         <?php
                         $lopDamNhan = $giaoVien->getAllLopDamNhan();
                         while ($allLop = mysqli_fetch_assoc($lopDamNhan)) {
-                            if (isset($_SESSION['lopKiemTra']) and $_SESSION['lopKiemTra'] == $allLop['maLop']) {
+                            if (isset($_SESSION['ThongTinThemCauHoi']) and $_SESSION['ThongTinThemCauHoi']['lopKiemTra'] == $allLop['maLop']) {
                         ?>
                                 <option selected value="<?= $allLop['maLop'] ?>"><?= $allLop['tenLop'] ?></option>
                             <?php
@@ -39,7 +39,7 @@
                         <?php
                         $hinhThucKiemTra = $giaoVien->getAllHinhThuc();
                         while ($loaiHinhThuc = mysqli_fetch_assoc($hinhThucKiemTra)) {
-                            if (isset($_SESSION['hinhThuc']) and $_SESSION['hinhThuc'] == $loaiHinhThuc['maLoaiDe']) {
+                            if (isset($_SESSION['ThongTinThemCauHoi']) and $_SESSION['ThongTinThemCauHoi']['hinhThuc'] == $loaiHinhThuc['maLoaiDe']) {
                         ?>
                                 <option selected value="<?= $loaiHinhThuc['maLoaiDe'] ?>"><?= $loaiHinhThuc['moTa'] ?></option>
                             <?php
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="timeToDo" class="form-label">Thời gian làm bài</label>
-                    <input type="time" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_SESSION['timeToDo']) ? $_SESSION['timeToDo'] : '' ?>">
+                    <input type="time" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeToDo'] : '' ?>">
                 </div>
                 <div class="col-md-3">
                     <label for="Quantityquestion" class="form-label">Số Lượng Câu Hỏi</label>
@@ -100,7 +100,7 @@
                     }
                     ?>
                 </div>
-                <?php if (isset($_SESSION['listCauHoi'])) { ?>
+                <?php if (isset($_SESSION['listCauHoi']) && sizeof($_SESSION['listCauHoi']) > 0) { ?>
                     <div class="create__test-btn">
                         <button name="taoBaiKiemTra" class="btn btn-danger m-1">Xóa Câu Hỏi</button>
                         <button type="button" class="btn btn-success m-1" style="float: right;" data-bs-toggle="modal" data-bs-target="#exampleModal">Tạo bài kiểm tra</button>
@@ -108,26 +108,29 @@
                 <?php } ?>
             </form>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            <?php if (isset($_SESSION['ThongTinThemCauHoi'])) { ?>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
 
-                    <div class="modal-content">
-                        <form method="POST">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Tạo Bài Kiểm Tra cho ?</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p><strong>Thời Gian Mở : <?= isset($_SESSION['timeStart']) ? $_SESSION['timeStart'] : 'Vui Lòng Nhập' ?></strong></p>
-                                <p><strong>Thời Gian Đóng : <?= isset($_SESSION['timeEnd']) ? $_SESSION['timeEnd'] : 'Vui Lòng Nhập' ?></strong></p>
-                                <p><strong>Thời Gian Làm Bài : <?= isset($_SESSION['timeToDo']) ?  $_SESSION['timeToDo'] : 'Vui Lòng Nhập' ?></strong></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-danger" name="btnTaoBaiKiemTra">Tạo</button>
-                            </div>
-                        </form>
+                        <div class="modal-content">
+                            <form method="POST">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Tạo Bài Kiểm Tra cho ?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- $_SESSION['ThongTinThemCauHoi'] = array("timeStart" => $_GET['timeStart'], "txtTenDe" => $_GET['txtTenDe'], "timeEnd" => $_GET['timeEnd'], "lopKiemTra" => $_GET['lopKiemTra'], "hinhThuc" => $_GET['hinhThuc'], "timeToDo" => $_GET['timeToDo']); -->
+                                    <p><strong>Thời Gian Mở : <?= $_SESSION['ThongTinThemCauHoi']['timeStart'] ?></strong></p>
+                                    <p><strong>Thời Gian Đóng : <?= $_SESSION['ThongTinThemCauHoi']['timeEnd'] ?></strong></p>
+                                    <p><strong>Thời Gian Làm Bài : <?= $_SESSION['ThongTinThemCauHoi']['timeToDo'] ?></strong></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger" name="btnTaoBaiKiemTra">Tạo</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -142,15 +145,10 @@ if (isset($_REQUEST['cauHoi'])) {
 }
 
 if (isset($_REQUEST['btnTaoBaiKiemTra'])) {
-    $taoBaiKiemTra = $giaoVien->insertBaiKiemTraTracNghiem($_SESSION['txtTenDe'], $_SESSION['timeStart'], $_SESSION['timeEnd'], $_SESSION['timeToDo'], sizeof($_SESSION['listCauHoi']), $_SESSION['hinhThuc'], $_SESSION['lopKiemTra'], $_SESSION['listCauHoi']);
+    $taoBaiKiemTra = $giaoVien->insertBaiKiemTraTracNghiem($_SESSION['ThongTinThemCauHoi']['txtTenDe'], $_SESSION['ThongTinThemCauHoi']['timeStart'], $_SESSION['ThongTinThemCauHoi']['timeEnd'], $_SESSION['ThongTinThemCauHoi']['timeToDo'], sizeof($_SESSION['listCauHoi']), $_SESSION['ThongTinThemCauHoi']['hinhThuc'], $_SESSION['ThongTinThemCauHoi']['lopKiemTra'], $_SESSION['listCauHoi']);
     if ($taoBaiKiemTra) {
+        unset($_SESSION['ThongTinThemCauHoi']);
         unset($_SESSION['listCauHoi']);
-        unset($_SESSION['timeStart']);
-        unset($_SESSION['txtTenDe']);
-        unset($_SESSION['timeEnd']);
-        unset($_SESSION['lopKiemTra']);
-        unset($_SESSION['hinhThuc']);
-        unset($_SESSION['timeToDo']);
         echo "<script>alert('Tạo Bài Kiểm Tra Thành Công')</script>";
         echo "<meta http-equiv='refresh' content='0;url=index.php'>";
     } else {

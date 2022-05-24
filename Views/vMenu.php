@@ -11,10 +11,11 @@
           <?php
           if ($_SESSION['IDChucVu'] == 1 or $_SESSION['IDChucVu'] == 2) {
             echo "<a class='nav-link active' href='?dsachlop'>Danh Sách Lớp Đảm Nhận</a>";
+            echo "<a class='nav-link active' href='?taoBaiKiemTra'>Tạo bài kiểm tra Trắc nghiệm</a>";
+            echo "<a class='nav-link active' href='?taoBaiKiemTraTuLuan'>Tạo bài kiểm tra Tự Luận</a>";
           }
           if ($_SESSION['IDChucVu'] == 1) {
             echo "<a class='nav-link active' href='?duyetCauHoi'>Duyệt Câu Hỏi</a>";
-            echo "<a class='nav-link active' href='?taoBaiKiemTra'>Tạo bài kiểm tra Trắc nghiệm</a>";
           }
           if ($_SESSION['IDChucVu'] == 3) {
             echo "<a class='nav-link active' href='?xemThongTinMonHoc'>Xem Thông Tin bài học</a>";

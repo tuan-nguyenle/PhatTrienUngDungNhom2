@@ -97,11 +97,11 @@
                     <?php
                     }
                     ?>
-                    <div class="create__test-btn">
-                        <button type="submit" class="btn btn-success" style="float: right;" name="btnDuyetCauHoi">
-                            Duyệt câu hỏi
-                        </button>
-                    </div>
+                </div>
+                <div class="create__test-btn">
+                    <button type="submit" class="btn btn-success" style="float: right;" name="btnDuyetCauHoi">
+                        Duyệt câu hỏi
+                    </button>
                 </div>
             </form>
             <?php

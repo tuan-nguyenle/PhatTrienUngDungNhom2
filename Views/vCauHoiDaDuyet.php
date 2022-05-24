@@ -134,12 +134,7 @@ if (isset($_SESSION['listCauHoi'])) {
     </div>
     <?php
     if (isset($_REQUEST['btnThemCauHoiMoi'])) {
-        $_SESSION['timeStart'] = $_GET['timeStart'];
-        $_SESSION['txtTenDe'] = $_GET['txtTenDe'];
-        $_SESSION['timeEnd'] = $_GET['timeEnd'];
-        $_SESSION['lopKiemTra'] = $_GET['lopKiemTra'];
-        $_SESSION['hinhThuc'] = $_GET['hinhThuc'];
-        $_SESSION['timeToDo'] = $_GET['timeToDo'];
+        $_SESSION['ThongTinThemCauHoi'] = array("timeStart" => $_GET['timeStart'], "txtTenDe" => $_GET['txtTenDe'], "timeEnd" => $_GET['timeEnd'], "lopKiemTra" => $_GET['lopKiemTra'], "hinhThuc" => $_GET['hinhThuc'], "timeToDo" => $_GET['timeToDo']);
         if (isset($_REQUEST['listCauHoi'])) {
             $_SESSION['listCauHoi'] = array_unique(array_merge($dsCauHoi, $_REQUEST['listCauHoi']));
         }

@@ -188,6 +188,8 @@ if (isset($_SESSION['LoginSuccess'])) {
                     include_once './Views/vChiTietDiemHocSinh.php';
                 } elseif (isset($_GET['btnThemCauHoi'])) {
                     include_once './Views/vCauHoiDaDuyet.php';
+                } elseif (isset($_GET['taoBaiKiemTraTuLuan'])) {
+                    include_once './Views/vTaoBaiKiemTraTuLuan.php';
                 } elseif (isset($_GET['taoBaiKiemTra'])) {
                     include_once './Views/vTaoBaiKiemTra.php';
                 } elseif (isset($_GET['taoCauHoi'])) {
@@ -208,6 +210,10 @@ if (isset($_SESSION['LoginSuccess'])) {
             case '2':
                 if (isset($_GET['thongKeBaiKiemTra']) && $_GET['thongKeBaiKiemTra'] != null) {
                     include_once './Views/vChiTietDiemHocSinh.php';
+                } elseif (isset($_GET['taoBaiKiemTraTuLuan'])) {
+                    include_once './Views/vTaoBaiKiemTraTuLuan.php';
+                } elseif (isset($_GET['btnThemCauHoi'])) {
+                    include_once './Views/vCauHoiDaDuyet.php';
                 } elseif (isset($_GET['taoBaiKiemTra'])) {
                     include_once './Views/vTaoBaiKiemTra.php';
                 } elseif (isset($_GET['taoCauHoi'])) {
@@ -262,7 +268,7 @@ if (isset($_SESSION['LoginSuccess'])) {
     ?>
     <?php include_once './Views/footer.php'; ?>
     <script>
-        var allEditors = document.querySelectorAll("#txtCauHoi, #txtDA1, #txtDA2, #txtDA3,#txtDA4,#txtDADung");
+        var allEditors = document.querySelectorAll("#txtCauHoi, #txtDA1, #txtDA2, #txtDA3,#txtDA4,#txtDADung,#txtCauHoiTuLuan");
         for (var i = 0; i < allEditors.length; ++i) {
             ClassicEditor.create(allEditors[i]);
         }
@@ -296,6 +302,13 @@ if (isset($_SESSION['LoginSuccess'])) {
             var maTaiKhoan = $(this).attr("data-id");
             $("#maTaiKhoan").val(maTaiKhoan);
         })
+        // Chấm điểm
+        $(document).on("click", ".chamDiem", function(e) {
+            $("#maHocSinh").val($(this).attr("data-maHocSinh"));
+            $("#tenHocSinh").html($(this).attr("data-tenHocSinh"));
+            $("#maDe").val($(this).attr("data-maDe"));
+            $("#txtDe").html($(this).attr("data-maDe"));
+        });
     </script>
 </body>
 
