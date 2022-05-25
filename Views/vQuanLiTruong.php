@@ -33,7 +33,7 @@
                         <tr>
                             <td><?= $thongTinChiTietTruong['maTruong'] ?></td>
                             <td><?= $thongTinChiTietTruong['tenTruong'] ?></td>
-                            <td><?= $thongTinChiTietTruong['diaChi'] ?></td>
+                            <td><?= $thongTinChiTietTruong['DCT'] ?></td>
                             <td><?= $thongTinChiTietTruong['tenThanhPho'] ?></td>
                             <td><?= $thongTinChiTietTruong['tenNguoiQuanTri'] ?></td>
                             <td><button type="submit" name="btnEditThongTin" class="btn btn-primary" value="<?= $thongTinChiTietTruong['maTruong'] ?>">Sửa</button></td>
@@ -46,7 +46,9 @@
         </div>
     </form>
 </div>
-<?php include_once './Views/vSuaThongTinTruong.php'; ?>
+<?php
+include_once './Views/vSuaThongTinTruong.php';
+?>
 <div class="modal fade" id="modalThemTruong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border-radius: 10px">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

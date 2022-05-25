@@ -1,3 +1,17 @@
+<?php
+if (isset($_REQUEST['btnEditThongTin'])) {
+    $thongTinChiTietTruongTheoThanhPho = $quanTriThanhPho->get1Truong($_REQUEST['btnEditThongTin']);
+    $thongTinChiTietTruongTheoThanhPho = mysqli_fetch_assoc($thongTinChiTietTruongTheoThanhPho);
+} else { ?>
+    <script>
+        $(function() {
+            $('#EditThongTin').modal('hide');
+        });
+    </script>
+<?php
+}
+?>
+
 <div class="modal fade" id="EditThongTin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border-radius: 10px">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -16,24 +30,36 @@
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="txtThanhPho">Thành Phố</label>
-                                    <input class="form-control" type="text" placeholder="Hồ Chí Minh" name="txtThanhPho" readonly>
+                                    <input class="form-control" type="text" placeholder="Hồ Chí Minh" name="txtThanhPho" value="<?= $thongTinChiTietTruongTheoThanhPho['tenThanhPho'] ?>" readonly>
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="txtTenTruong">Tên Trường</label>
-                                    <input class="form-control" type="text" placeholder="Hà Huy Tập" name="txtTenTruong" require>
+                                    <input class="form-control" type="text" placeholder="Hà Huy Tập" name="txtTenTruong" value="<?= $thongTinChiTietTruongTheoThanhPho['tenTruong'] ?>">
                                 </div>
                             </div>
                             <div class="form-group col-sm-12">
                                 <label for="txtDiaChiTruong">Địa Chỉ Trường</label>
-                                <input type="text" name="txtDiaChiTruong" id="txtDiaChiTruong" class="form-control" placeholder="79, Đường 23/10,Nha Trang, Khánh Hòa" required>
+                                <input type="text" name="txtDiaChiTruong" id="txtDiaChiTruong" class="form-control" placeholder="79, Đường 23/10,Nha Trang, Khánh Hòa" value="<?= $thongTinChiTietTruongTheoThanhPho['diaChi'] ?>">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="btnTaoTruong" class="btn btn-primary">Lưu</button>
+                    <button type="submit" name="btnEditThongTinTruong" class="btn btn-primary">Lưu</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<?php
+if (isset($_REQUEST['btnEditThongTinTruong'])) {
+    $update = $quanTriThanhPho->updateThongTinTruong($_REQUEST['maTruong'], $_REQUEST['txtTenTruong'], $_REQUEST['txtDiaChiTruong']);
+    if ($update) {
+        echo "<script>alert('Cập Nhật Thành Công')</script>";
+        echo "<meta http-equiv='refresh' content='0;url=quanTriThanhPho.php?quanLiTruong'>";
+    } else {
+        echo "<script>alert('Cập Nhật Thành Công')</script>";
+    }
+}
+?>

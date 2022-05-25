@@ -66,7 +66,7 @@ class mQuanTriThanhPho
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
-        $sql = "SELECT * FROM `truong` INNER JOIN `thanhpho` ON `truong`.`maThanhPho`=`thanhpho`.`maThanhPho` INNER JOIN `quantritruong` ON `quantritruong`.`maTruong` = `truong`.`maTruong`";
+        $sql = "SELECT *, `truong`.`diaChi` AS 'DCT' FROM `truong` INNER JOIN `thanhpho` ON `truong`.`maThanhPho`=`thanhpho`.`maThanhPho` INNER JOIN `quantritruong` ON `quantritruong`.`maTruong` = `truong`.`maTruong`";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;
@@ -112,6 +112,26 @@ class mQuanTriThanhPho
         $password = MD5('hahohi');
         mysqli_query($connectDB->connect, "INSERT INTO `taikhoan` (`password`, `IDChucVu`, `comment`, `maTruong`) VALUES ('$password', '4', 'hahohi', '$maTruong')");
         mysqli_query($connectDB->connect, "INSERT INTO `quantritruong`(`tenNguoiQuanTri`, `email`, `SDT`, `diaChi`, `maTaiKhoan`, `ngaySinh`, `CCCD`, `maTruong`, `gioiTinh`) VALUES ('$tenNguoiQuanTri','$email','$SDT','$diaChiNguoiQuanTri','$maTaiKhoan','$ngaySinh','$CCCD', '$maTruong',b'$gioiTinh')");
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // get 1 truong
+    public function get1Truong($maTruong)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `truong` INNER JOIN `thanhpho` ON `truong`.`maThanhPho` = `thanhpho`.`maThanhPho` WHERE `maTruong`='$maTruong'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // update thong tin
+    public function updateThongTinTruong($maTruong, $tenTruong, $diaChi)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "UPDATE `truong` SET `tenTruong`='$tenTruong',`diaChi`='$diaChi' WHERE `maTruong` = '$maTruong'";
+        $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;
     }

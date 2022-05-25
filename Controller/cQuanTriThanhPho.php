@@ -79,4 +79,16 @@ class quanTriThanhPho
         $modelQuanTriThanhPho = new mQuanTriThanhPho();
         return $modelQuanTriThanhPho->insertTruongMoi($tenTruong, $diaChi, $maThanhPho, $tenNguoiQuanTri, $email, $SDT, $diaChiNguoiQuanTri, $maTaiKhoan, $ngaySinh, $CCCD, $gioiTinh, $maTruong);
     }
+    // get 1 truong
+    public function get1Truong($maTruong)
+    {
+        $modelQuanTriThanhPho = new mQuanTriThanhPho();
+        return $modelQuanTriThanhPho->get1Truong($maTruong);
+    }
+    // get 1 truong
+    public function updateThongTinTruong($maTruong, $tenTruong, $diaChi)
+    {
+        $modelQuanTriThanhPho = new mQuanTriThanhPho();
+        return $modelQuanTriThanhPho->updateThongTinTruong($maTruong, $tenTruong, $diaChi);
+    }
 }
