@@ -13,11 +13,11 @@
                             while ($maDe = mysqli_fetch_assoc($allMaDe)) {
                                 if (isset($_REQUEST['cbMaDe']) and $_REQUEST['cbMaDe'] == $maDe['maDe']) {
                             ?>
-                                    <option selected value="?thongKeBaiKiemTra=<?= $_REQUEST['thongKeBaiKiemTra'] ?>&&cbMaDe=<?= $maDe['maDe'] ?>"><?= "Đề " . $maDe['maDe'] . ": " . $maDe['tenDe'] ?></option>
+                                    <option selected value="?thongKeBaiKiemTra=<?= $_REQUEST['thongKeBaiKiemTra'] ?>&&cbMaDe=<?= $maDe['maDe'] ?>"><?= "Đề " . $maDe['maDe'] . ": " . $maDe['tenDe'] . " (" . $maDe['type'] . ")" ?></option>
                                 <?php
                                 } else {
                                 ?>
-                                    <option value="?thongKeBaiKiemTra=<?= $_REQUEST['thongKeBaiKiemTra'] ?>&&cbMaDe=<?= $maDe['maDe'] ?>"><?= "Đề " . $maDe['maDe'] . ": " . $maDe['tenDe'] ?></option>
+                                    <option value="?thongKeBaiKiemTra=<?= $_REQUEST['thongKeBaiKiemTra'] ?>&&cbMaDe=<?= $maDe['maDe'] ?>"><?= "Đề " . $maDe['maDe'] . ": " . $maDe['tenDe'] . " (" . $maDe['type'] . ")" ?></option>
                             <?php }
                             } ?>
                         </select>

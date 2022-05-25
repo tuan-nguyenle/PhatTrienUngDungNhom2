@@ -9,6 +9,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="quanTriThanhPho.php">Trang chủ</a>
                     <a class="nav-link active" aria-current="page" href="?quanLiMonHoc">Quản Lý Môn Học</a>
+                    <a class="nav-link active" aria-current="page" href="?quanLiTruong">Quản Lý Trường</a>
                 </div>
             </div>
         </div>

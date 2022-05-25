@@ -156,6 +156,9 @@ if (isset($_REQUEST['logout'])) {
     } elseif (isset($_REQUEST['quanLiMonHoc'])) {
         include_once './Views/vMenuQuanTriThanhPho.php';
         include_once './Views/vQuanLiMonHoc.php';
+    } elseif (isset($_REQUEST['quanLiTruong'])) {
+        include_once './Views/vMenuQuanTriThanhPho.php';
+        include_once './Views/vQuanLiTruong.php';
     } else {
         include_once './Views/vMenuQuanTriThanhPho.php';
         include_once './Views/vHomePage.php';
@@ -167,6 +170,12 @@ if (isset($_REQUEST['logout'])) {
             var maMonHoc = $(this).attr("data-maMon");
             $("#maMonHoc").val(maMonHoc);
         })
+        $("#txtSearch").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
     </script>
 </body>
 

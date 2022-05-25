@@ -70,7 +70,7 @@
                             <div class="wid-row__full">
                                 <div class="container__list-question" style="background-color: #F9F9F9;">
                                     <div class="block-question">
-                                        <div class="block-question__heading mb-2"><span><?= "Câu " . $chiTietCauHoi['maCauHoi'] ?></span>
+                                        <div class="block-question__heading mb-2"><span><?= "Câu " . $chiTietCauHoi['maCauHoi'] . " : " . $chiTietCauHoi['cauHoi'] ?></span>
                                         </div>
                                         <ul>
                                             <li>

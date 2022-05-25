@@ -49,4 +49,34 @@ class quanTriThanhPho
         $modelQuanTriThanhPho = new mQuanTriThanhPho();
         return $modelQuanTriThanhPho->xoaMonHocMoiChoKhoi($maKhoi, $maMonHoc);
     }
+    // lay thong tin tat ca cac truong
+    public function getAllTruong()
+    {
+        $modelQuanTriThanhPho = new mQuanTriThanhPho();
+        return $modelQuanTriThanhPho->getAllTruong();
+    }
+    // lay thong tin tat ca cac thanh pho
+    public function getAllThanhPho()
+    {
+        $modelQuanTriThanhPho = new mQuanTriThanhPho();
+        return $modelQuanTriThanhPho->getAllThanhPho();
+    }
+    //  lay ma tai khoan cui cung
+    public function xemTaiKhoanCuoiCung()
+    {
+        $modelQuanTriThanhPho = new mQuanTriThanhPho();
+        return $modelQuanTriThanhPho->xemTaiKhoanCuoiCung();
+    }
+    //  lay ma tai khoan cui cung
+    public function xemTruongCuoiCung()
+    {
+        $modelQuanTriThanhPho = new mQuanTriThanhPho();
+        return $modelQuanTriThanhPho->xemTruongCuoiCung();
+    }
+    //  Them Truong Moi
+    public function insertTruongMoi($tenTruong, $diaChi, $maThanhPho, $tenNguoiQuanTri, $email, $SDT, $diaChiNguoiQuanTri, $maTaiKhoan, $ngaySinh, $CCCD, $gioiTinh, $maTruong)
+    {
+        $modelQuanTriThanhPho = new mQuanTriThanhPho();
+        return $modelQuanTriThanhPho->insertTruongMoi($tenTruong, $diaChi, $maThanhPho, $tenNguoiQuanTri, $email, $SDT, $diaChiNguoiQuanTri, $maTaiKhoan, $ngaySinh, $CCCD, $gioiTinh, $maTruong);
+    }
 }

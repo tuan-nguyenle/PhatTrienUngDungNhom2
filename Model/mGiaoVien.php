@@ -284,7 +284,7 @@ class mGiaoVien
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
-        $sql = "INSERT INTO `de`(`tenDe`, `ngayLam`, `hanNop`, `maKhoi`, `maMonHoc`, `ThoiGianLam`,`soCauHoi`, `maLoaiDe`, `maLop`) VALUES ('$tenDe', '$ngayLam', '$hanNop', (SELECT `khoi`.`maKhoi` FROM `khoi` INNER JOIN `lop` ON `lop`.`maKhoi` = `khoi`.`maKhoi` WHERE `lop`.`maLop` ='$maLop'), '$maMonHoc', '$ThoiGianLam','$soCauHoi', '$maLoaiDe', '$maLop')";
+        $sql = "INSERT INTO `de`(`tenDe`, `ngayLam`, `hanNop`, `maKhoi`, `maMonHoc`, `ThoiGianLam`,`soCauHoi`, `maLoaiDe`, `maLop`,`type`) VALUES ('$tenDe', '$ngayLam', '$hanNop', (SELECT `khoi`.`maKhoi` FROM `khoi` INNER JOIN `lop` ON `lop`.`maKhoi` = `khoi`.`maKhoi` WHERE `lop`.`maLop` ='$maLop'), '$maMonHoc', '$ThoiGianLam','$soCauHoi', '$maLoaiDe', '$maLop','Đề Trắc Nghiệm')";
         $result = mysqli_query($connectDB->connect, $sql);
         foreach ($arrayCauHoi as $cauHoi) {
             $sql = "INSERT INTO `chitietdekiemtratracnghiem`(`maDe`, `maCauHoi`) VALUES ((SELECT `de`.`maDe` FROM `de` ORDER BY `de`.`maDe` DESC LIMIT 0,1),'$cauHoi')";
@@ -298,7 +298,7 @@ class mGiaoVien
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
-        $sql = "SELECT * FROM `de` WHERE `maMonHoc` = '$maMonHoc' AND `maLop` = '$maLop'";
+        $sql = "SELECT * FROM `de` INNER JOIN `loaide` ON `de`.`maLoaiDe`=`loaide`.`maLoaiDe` WHERE `maMonHoc` = '$maMonHoc' AND `maLop` = '$maLop'";
         $result = mysqli_query($connectDB->connect, $sql);
         $connectDB->closeDatabase();
         return $result;
@@ -328,7 +328,7 @@ class mGiaoVien
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
-        $sql = "INSERT INTO `de`(`tenDe`, `ngayLam`, `hanNop`, `maKhoi`, `maMonHoc`, `ThoiGianLam`,`soCauHoi`, `maLoaiDe`, `maLop`) VALUES ('$tenDe', '$ngayLam', '$hanNop', (SELECT `khoi`.`maKhoi` FROM `khoi` INNER JOIN `lop` ON `lop`.`maKhoi` = `khoi`.`maKhoi` WHERE `lop`.`maLop` ='$maLop'), '$maMonHoc', '$ThoiGianLam','1', '$maLoaiDe', '$maLop')";
+        $sql = "INSERT INTO `de`(`tenDe`, `ngayLam`, `hanNop`, `maKhoi`, `maMonHoc`, `ThoiGianLam`,`soCauHoi`, `maLoaiDe`, `maLop`,`type`) VALUES ('$tenDe', '$ngayLam', '$hanNop', (SELECT `khoi`.`maKhoi` FROM `khoi` INNER JOIN `lop` ON `lop`.`maKhoi` = `khoi`.`maKhoi` WHERE `lop`.`maLop` ='$maLop'), '$maMonHoc', '$ThoiGianLam','1', '$maLoaiDe', '$maLop','Đề Tự Luận')";
         $result = mysqli_query($connectDB->connect, $sql);
         mysqli_query($connectDB->connect, "INSERT INTO `detuluan`(`maDe`, `cauHoi`) VALUES ((SELECT `de`.`maDe` FROM `de` ORDER BY `de`.`maDe` DESC LIMIT 0,1),'$cauHoiTuLuan')");
         $connectDB->closeDatabase();
