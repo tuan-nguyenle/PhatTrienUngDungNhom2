@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="timeToDo" class="form-label">Thời gian làm bài</label>
-                    <input type="time" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeToDo'] : '' ?>">
+                    <input type="time" step="2" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeToDo'] : '' ?>">
                 </div>
                 <div class="col-md-3">
                     <label for="Quantityquestion" class="form-label">Số Lượng Câu Hỏi</label>

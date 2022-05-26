@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="txtTenDe" class="form-label">Tên Đề</label>
-                    <input type="text" class="form-control" name="txtTenDe" value="<?= isset($_REQUEST['txtTenDe']) ? $_REQUEST['txtTenDe'] : '' ?>">
+                    <input type="text" required class="form-control" name="txtTenDe" value="<?= isset($_REQUEST['txtTenDe']) ? $_REQUEST['txtTenDe'] : '' ?>">
                 </div>
                 <div class="col-md-3">
                     <label for="lopKiemTra" class="form-label">Lớp</label>
@@ -52,11 +52,11 @@
                 </div>
                 <div class="col-md-3">
                     <label for="timeToDo" class="form-label">Thời gian làm bài</label>
-                    <input type="time" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_REQUEST['timeToDo']) ? $_REQUEST['timeToDo'] : '' ?>">
+                    <input  type="time" step="2" class="form-control" id="timeToDo" name="timeToDo" required value="<?= isset($_REQUEST['timeToDo']) ? $_REQUEST['timeToDo'] : '' ?>">
                 </div>
                 <div class="col-md-12">
                     <label for="txtCauHoiTuLuan">Câu hỏi</label>
-                    <textarea type="text" class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan">
+                    <textarea type="text" class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan" required>
                     </textarea>
                 </div>
                 <div class="col-12">
