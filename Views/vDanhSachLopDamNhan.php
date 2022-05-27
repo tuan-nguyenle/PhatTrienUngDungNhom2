@@ -17,11 +17,11 @@
                 <tbody>
                     <?php
                     $lopDamNhan = $giaoVien->getAllLopDamNhan();
-                    if (mysqli_num_rows($lopDamNhan) > 0) {
+                    if (mysqli_num_rows($lopDamNhan) > 0 ) {
                         while ($tbl = mysqli_fetch_assoc($lopDamNhan)) {
                     ?>
                             <tr>
-                                <td><?= $tbl['maLop'] ?></td>
+                                <td><?= $tbl['maLop']  ?></td>
                                 <td><?= $tbl['tenLop'] ?></td>
                                 <td><?= $tbl['siSo'] ?></td>
                                 <td><?= $tbl['tenTruong'] ?></td>
