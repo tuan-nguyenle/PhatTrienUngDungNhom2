@@ -105,13 +105,17 @@ class mQuanTriTruong
     }
 
     // Thêm Học Sinh
-    public function themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    public function themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu, $lop)
     {
         $connectDB = new database();
         $connectDB->connectDatabase();
         mysqli_query($connectDB->connect, "INSERT INTO `taikhoan` (`maTaiKhoan`, `password`, `IDChucVu`, `comment`, `maTruong`) VALUES (NULL, MD5('1111'), '$chucVu', '1111', '$maTruong')");
         $sql = "INSERT INTO `hocsinh` (`tenHocSinh`,`ngaySinh`, `gioiTinh`, `diaChi`, `CCCD`, `email`, `SDT`, `maTaiKhoan`, `maTruong`) VALUES ('$tenHocSinh','$ngaySinh', b'$gioiTinh', '$diaChi', '$CCCD', '$email', '$SDT', '$maTaiKhoan', '$maTruong')";
         $result = mysqli_query($connectDB->connect, $sql);
+        if ($result) {
+            $taiKhoanHocSinh = mysqli_insert_id($connectDB->connect);
+            mysqli_query($connectDB->connect, "INSERT INTO `chitietlop`(`maHocSinh`, `maLop`) VALUES ('$taiKhoanHocSinh','$lop')");
+        }
         $connectDB->closeDatabase();
         return $result;
     }
@@ -241,4 +245,24 @@ class mQuanTriTruong
         $connectDB->closeDatabase();
         return $result;
     }
+    // lay lop co trong truong
+    public function getAllLop($maTruong)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `lop` WHERE `maTruong`='$maTruong'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // // get last ID HS
+    // public function getLastIDHocSinh()
+    // {
+    //     $connectDB = new database();
+    //     $connectDB->connectDatabase();
+    //     $sql = "SELECT * FROM `hocsinh` WHERE `maTruong`='$maTruong'";
+    //     $result = mysqli_query($connectDB->connect, $sql);
+    //     $connectDB->closeDatabase();
+    //     return $result;
+    // }
 }

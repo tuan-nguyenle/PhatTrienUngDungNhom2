@@ -80,6 +80,19 @@
                                     ?>
                                 </select>
                             </div>
+                            <div class="col-2 lopHoc" style="display: none;">
+                                <label for="lopHoc">Lớp Học</label>
+                                <select class="form-select" name='txtLopHoc' id='lopHoc'>
+                                    <?php
+                                    $allLop = $quanTriTruong->getAllLop();
+                                    if ($allLop) {
+                                        while ($row = mysqli_fetch_assoc($allLop)) {
+                                            echo "<option value='" . $row['maLop'] . "'>" . $row['tenLop'] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
@@ -94,8 +107,12 @@
 <script>
     $("#chucVu").change(function(event) {
         if ($('select#chucVu').find('option:selected').val() == 3 || $('select#chucVu').find('option:selected').val() == 4) {
+            if ($('select#chucVu').find('option:selected').val() == 3) {
+                $('.lopHoc').show();
+            }
             $('.monHoc').hide();
         } else {
+            $('.lopHoc').hide();
             $('.monHoc').show();
         }
     });
@@ -139,7 +156,7 @@ if (isset($_REQUEST['themNguoiDungMoi'])) {
             }
         }
         if ($_REQUEST['txtChucVu'] == 3) {
-            $insertHocSinh = $quanTriTruong->themHocSinh($tk, $_REQUEST['txtTen'], $_REQUEST['txtCCCD'], $_REQUEST['txtNgaySinh'], $_REQUEST['txtEmail'], $_REQUEST['txtSDT'], $_REQUEST['txtDiaChi'], $_REQUEST['sex'], $thongTinTruong['maTruong'], $_REQUEST['txtChucVu']);
+            $insertHocSinh = $quanTriTruong->themHocSinh($tk, $_REQUEST['txtTen'], $_REQUEST['txtCCCD'], $_REQUEST['txtNgaySinh'], $_REQUEST['txtEmail'], $_REQUEST['txtSDT'], $_REQUEST['txtDiaChi'], $_REQUEST['sex'], $thongTinTruong['maTruong'], $_REQUEST['txtChucVu'], $_REQUEST['txtLopHoc']);
             if ($insertHocSinh) {
                 echo "<script>alert('Thêm Thành Công')</script>";
                 echo "<meta http-equiv='refresh' content='0;url=index.php?quanLyTaiKhoan&&chucVu=" . $_REQUEST['chucVu'] . "'>";

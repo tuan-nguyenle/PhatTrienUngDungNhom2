@@ -74,10 +74,10 @@ class quanTriTruong
         return $modelQuanTriTruong->themGiaoVien($maTaiKhoan, $tenGiaoVien, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu, $maMonHoc);
     }
     // Thêm Học Sinh
-    public function themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
+    public function themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu, $lop)
     {
         $modelQuanTriTruong = new mQuanTriTruong();
-        return $modelQuanTriTruong->themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu);
+        return $modelQuanTriTruong->themHocSinh($maTaiKhoan, $tenHocSinh, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu, $lop);
     }
     // Thêm Quan Tri
     public function themQuanTriTruong($maTaiKhoan, $tenNguoiQuanTri, $CCCD, $ngaySinh, $email, $SDT, $diaChi, $gioiTinh, $maTruong, $chucVu)
@@ -151,4 +151,16 @@ class quanTriTruong
         $modelQuanTriTruong = new mQuanTriTruong();
         return $modelQuanTriTruong->phanCongGiaoVien($maGiaoVien, $arrayLopMuonThem);
     }
+    // lay lop co trong truong
+    public function getAllLop()
+    {
+        $modelQuanTriTruong = new mQuanTriTruong();
+        return $modelQuanTriTruong->getAllLop($this->maTruong);
+    }
+    // get last ID HS
+    // public function getLastIDHocSinh()
+    // {
+    //     $modelQuanTriTruong = new mQuanTriTruong();
+    //     return $modelQuanTriTruong->getLastIDHocSinh();
+    // }
 }
