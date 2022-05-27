@@ -1,4 +1,4 @@
-<div class='col py-3'>
+<div class="col-9" style="padding: 1%;">
     <h3>
         <center>Thông tin cá nhân</center>
     </h3>
@@ -7,7 +7,7 @@
             <div class="card--GV">
                 <div class="card-body ">
                     <div class="d-flex">
-                        <div class="col-2 mt-2">
+                        <div class="col-3 mt-2">
                             <div class="avatar-wrapper">
                                 <img class="profile-pic" src="<?= $anh = $giaoVien->getAnhDaiDien() ?>" />
                                 <div class="upload-button">
@@ -16,7 +16,7 @@
                                 <input class="file-upload" type="file" name="avatar" />
                             </div>
                         </div>
-                        <ul class="col-8">
+                        <ul class="col-10">
                             <li class="list-inline">
                                 <div class="form-group row">
                                     <label for="txtTen" class="col-sm-3 col-form-label">

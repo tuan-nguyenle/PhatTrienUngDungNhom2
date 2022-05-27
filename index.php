@@ -175,12 +175,32 @@ if (isset($_SESSION['LoginSuccess'])) {
     } elseif (isset($_GET['myInfo'])) {
         include_once './Views/vMenu.php';
         if ($_SESSION['IDChucVu'] == '1' || $_SESSION['IDChucVu'] == '2') {
-            echo "<div class='container-fluid'><div class='row flex-nowrap'>";
-            include_once './Views/vSidebar.php';
+            echo "<div class='container' style='background-color: white;'>
+            <div class='row'>";
+            include_once './Views/vSidebarInfo.php';
             include_once './Views/vInfo.php';
             echo "</div></div>";
         } else {
+            echo "<div class='container' style='background-color: white;'>
+            <div class='row'>";
+            include_once './Views/vSidebarInfo.php';
             include_once './Views/vInfo.php';
+            echo "</div></div>";
+        }
+    } elseif (isset($_GET['changePassword'])) {
+        include_once './Views/vMenu.php';
+        if ($_SESSION['IDChucVu'] == '1' || $_SESSION['IDChucVu'] == '2') {
+            echo "<div class='container' style='background-color: white; width: 70%;min-height: 450px;'>
+            <div class='row'>";
+            include_once './Views/vSidebarInfo.php';
+            include_once './Views/vChangePassword.php';
+            echo "</div></div>";
+        } else {
+            echo "<div class='container' style='background-color: white; width: 70%;min-height: 450px;'>
+            <div class='row'>";
+            include_once './Views/vSidebarInfo.php';
+            include_once './Views/vChangePassword.php';
+            echo "</div></div>";
         }
     } elseif (isset($_SESSION['IDChucVu'])) {
         switch ($_SESSION['IDChucVu']) {
@@ -269,6 +289,10 @@ if (isset($_SESSION['LoginSuccess'])) {
     ?>
     <?php include_once './Views/footer.php'; ?>
     <script>
+        var allEditors = document.querySelectorAll("#txtCauHoi, #txtDA1, #txtDA2, #txtDA3,#txtDA4,#txtDADung,#txtCauHoiTuLuan");
+        for (var i = 0; i < allEditors.length; ++i) {
+            ClassicEditor.create(allEditors[i]);
+        }
         $(document).ready(function() {
             var readURL = function(input) {
                 if (input.files && input.files[0]) {

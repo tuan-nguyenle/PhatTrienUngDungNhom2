@@ -18,4 +18,14 @@ class cTaiKhoan
             echo "<script>alert('Sai Thông tin đăng nhập')</script>";
         }
     }
+    public function getMK($username)
+    {
+        $taiKhoan = new mTaiKhoan();
+        return $taiKhoan->getMK($username);
+    }
+    public function updatePassword($username, $password)
+    {
+        $taiKhoan = new mTaiKhoan();
+        return $taiKhoan->updatePassword($username, $password);
+    }
 }

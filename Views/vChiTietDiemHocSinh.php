@@ -58,7 +58,7 @@
                                     <?php
                                     $fileNop = $giaoVien->taiBaiTuLuan($listHsinhDaLam['maHocSinh'], $listHsinhDaLam['maDe']);
                                     $file = mysqli_fetch_assoc($fileNop);
-                                    if ($_REQUEST['loaiDe'] == "Đề Tự Luận") {
+                                    if (isset($_REQUEST['loaiDe']) && $_REQUEST['loaiDe'] == "Đề Tự Luận") {
                                         if (mysqli_num_rows($fileNop) > 0) {
                                             if (preg_match("/Nộp Muộn/i", substr($file['tinhTrangNop'], 0, 12))) {
                                                 echo "<a style='text-decoration: none;color:red;' href='" . $file['duongDan'] . "'>
