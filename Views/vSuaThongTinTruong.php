@@ -26,7 +26,7 @@ if (isset($_REQUEST['btnEditThongTin'])) {
                             <div class="row">
                                 <div class="form-group col-sm-4">
                                     <label for="maTruong">Mã Trường</label>
-                                    <input type="text" id="maTruong" name="maTruong" class="form-control" value="<?= mysqli_fetch_assoc($quanTriThanhPho->xemTruongCuoiCung())['maTruong'] ?>" readonly>
+                                    <input type="text" id="maTruong" name="maTruong" class="form-control" value="<?= mysqli_fetch_assoc($quanTriThanhPho->get1Truong($_REQUEST['btnEditThongTin']))['maTruong'] ?>" readonly>
                                 </div>
                                 <div class="form-group col-sm-4">
                                     <label for="txtThanhPho">Thành Phố</label>
