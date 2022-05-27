@@ -227,4 +227,24 @@ class mHocSinh
         $connectDB->closeDatabase();
         return $result;
     }
+    // getPassWord
+    public function getPassWord($maTaiKhoan)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `taikhoan` WHERE `taikhoan`.`maTaiKhoan` = '$maTaiKhoan'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // update thong tin nguoi dung
+    public function updateInfoUser($tenHocSinh, $anh, $CCCD, $ngaySinh, $diaChi, $email, $SDT, $maTaiKhoan)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "UPDATE `hocsinh` SET `tenHocSinh`='$tenHocSinh',`anhDaiDien`='$anh',`CCCD`='$CCCD',`ngaySinh`='$ngaySinh',`diaChi`='$diaChi',`email`='$email',`SDT`='$SDT' WHERE `maTaiKhoan`='$maTaiKhoan'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
 }

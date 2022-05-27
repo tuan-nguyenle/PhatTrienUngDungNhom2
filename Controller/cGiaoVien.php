@@ -217,4 +217,22 @@ class giaoVien
         $modelGiaoVien = new mGiaoVien();
         return $modelGiaoVien->chamDiemBaiKiemTra($maHocSinh, $maDe, $diem);
     }
+    // Down bai tu luan
+    public function taiBaiTuLuan($maHocSinh, $maDe)
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return $modelGiaoVien->taiBaiTuLuan($maHocSinh, $maDe);
+    }
+    // getPassWord
+    public function getPassWord()
+    {
+        $modelGiaoVien = new mGiaoVien();
+        return mysqli_fetch_assoc($modelGiaoVien->getPassWord($this->maTaiKhoan))['password'];
+    }
+    // update thong tin nguoi dung
+    public function updateInfoUser($tenGiaoVien, $anh, $CCCD, $ngaySinh, $diaChi, $email, $SDT)
+    {
+        $mGiaoVien = new mGiaoVien();
+        return $mGiaoVien->updateInfoUser($tenGiaoVien, $anh, $CCCD, $ngaySinh, $diaChi, $email, $SDT, $this->maTaiKhoan);
+    }
 }

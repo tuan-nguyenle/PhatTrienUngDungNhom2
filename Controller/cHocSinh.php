@@ -39,6 +39,13 @@ class hocSinh
         $maHocSinh = $modelHocSinh->getMaHocSinh($this->maTaiKhoan);
         return mysqli_fetch_assoc($maHocSinh)['maHocSinh'];
     }
+    // get Ma Giao Vien
+    public function getCCCD()
+    {
+        $modelHocSinh = new mHocSinh();
+        $CCCD = $modelHocSinh->getCCCD($this->maTaiKhoan);
+        return mysqli_fetch_assoc($CCCD)['CCCD'];
+    }
     // get ten Giao Vien
     public function getTenHocSinh()
     {
@@ -161,5 +168,17 @@ class hocSinh
     {
         $modelHocSinh = new mHocSinh();
         return $modelHocSinh->tinhDiem($this->getMaHocSinh(), $maDe, $diem);
+    }
+    // getPassWord
+    public function getPassWord()
+    {
+        $modelHocSinh = new mHocSinh();
+        return mysqli_fetch_assoc($modelHocSinh->getPassWord($this->maTaiKhoan))['password'];
+    }
+    // update thong tin nguoi dung
+    public function updateInfoUser($tenHocSinh, $anh, $CCCD, $ngaySinh, $diaChi, $email, $SDT)
+    {
+        $modelHocSinh = new mHocSinh();
+        return $modelHocSinh->updateInfoUser($tenHocSinh, $anh, $CCCD, $ngaySinh, $diaChi, $email, $SDT, $this->maTaiKhoan);
     }
 }

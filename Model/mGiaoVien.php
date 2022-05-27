@@ -334,4 +334,34 @@ class mGiaoVien
         $connectDB->closeDatabase();
         return $result;
     }
+    // Down bai tu luan
+    public function taiBaiTuLuan($maHocSinh, $maDe)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `file` WHERE `maHocSinh` = '$maHocSinh' AND `maDe` ='$maDe'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // getPassWord
+    public function getPassWord($maTaiKhoan)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "SELECT * FROM `taikhoan` WHERE `taikhoan`.`maTaiKhoan` = '$maTaiKhoan'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
+    // update
+    public function updateInfoUser($tenGiaoVien, $anh, $CCCD, $ngaySinh, $diaChi, $email, $SDT, $maTaiKhoan)
+    {
+        $connectDB = new database();
+        $connectDB->connectDatabase();
+        $sql = "UPDATE `giaovien` SET `tenGiaoVien`='$tenGiaoVien',`anhDaiDien`='$anh',`CCCD`='$CCCD',`ngaySinh`='$ngaySinh',`diaChi`='$diaChi',`email`='$email',`SDT`='$SDT' WHERE `maTaiKhoan`='$maTaiKhoan'";
+        $result = mysqli_query($connectDB->connect, $sql);
+        $connectDB->closeDatabase();
+        return $result;
+    }
 }

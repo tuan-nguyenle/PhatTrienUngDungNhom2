@@ -43,6 +43,7 @@ if (isset($_SESSION['LoginSuccess'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="./Image/lms-learning-management-system-concept-with-big-vector-27335395.jpg">
     <!-- Latest compiled JavaScript -->
+    <link rel="stylesheet" href="./CSS/avatar.css">
     <link rel="stylesheet" href="./bootrap/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./bootrap/fontawesome-free-5.15.3-web/css/all.css">
     <link rel="stylesheet" href="./bootrap/fontawesome-free-5.15.3-web/css/fontawesome.css">
@@ -268,10 +269,27 @@ if (isset($_SESSION['LoginSuccess'])) {
     ?>
     <?php include_once './Views/footer.php'; ?>
     <script>
-        var allEditors = document.querySelectorAll("#txtCauHoi, #txtDA1, #txtDA2, #txtDA3,#txtDA4,#txtDADung,#txtCauHoiTuLuan");
-        for (var i = 0; i < allEditors.length; ++i) {
-            ClassicEditor.create(allEditors[i]);
-        }
+        $(document).ready(function() {
+            var readURL = function(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('.profile-pic').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(".file-upload").on('change', function() {
+                readURL(this);
+            });
+
+            $(".upload-button").on('click', function() {
+                $(".file-upload").click();
+            });
+        });
         // search
         $("#search").on("keyup", function() {
             var value = $(this).val().toLowerCase();

@@ -9,7 +9,6 @@
                             <option value="?thongKeBaiKiemTra=<?= $_REQUEST['thongKeBaiKiemTra'] ?>&&cbMaDe=">Chọn Đề</option>
                             <?php
                             $allMaDe = $giaoVien->getAllDeKiemTraDaRa($_REQUEST['thongKeBaiKiemTra']);
-                            // echo "<script>alert('" . $_REQUEST['thongKeBaiKiemTra'] . "')</script>";
                             while ($maDe = mysqli_fetch_assoc($allMaDe)) {
                                 if (isset($_REQUEST['cbMaDe']) and $_REQUEST['cbMaDe'] == $maDe['maDe']) {
                             ?>
@@ -17,7 +16,7 @@
                                 <?php
                                 } else {
                                 ?>
-                                    <option value="?thongKeBaiKiemTra=<?= $_REQUEST['thongKeBaiKiemTra'] ?>&&cbMaDe=<?= $maDe['maDe'] ?>"><?= "Đề " . $maDe['maDe'] . ": " . $maDe['tenDe'] . " (" . $maDe['type'] . ")" ?></option>
+                                    <option value="?thongKeBaiKiemTra=<?= $_REQUEST['thongKeBaiKiemTra'] ?>&&cbMaDe=<?= $maDe['maDe'] ?>&&loaiDe=<?= $maDe['type'] ?>"><?= "Đề " . $maDe['maDe'] . ": " . $maDe['tenDe'] . " (" . $maDe['type'] . ")" ?></option>
                             <?php }
                             } ?>
                         </select>
@@ -34,6 +33,7 @@
                         <th scope="col">Thời Gian Bắt Đầu</th>
                         <th scope="col">Thời Gian Kết Thúc</th>
                         <th scope="col">Loại Bài</th>
+                        <?= (isset($_REQUEST['loaiDe']) and $_REQUEST['loaiDe'] == 'Đề Tự Luận') ? "<th scope='col'>File</th>" : '' ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +54,27 @@
                                 <td><?= $listHsinhDaLam['ngayLam'] ?></td>
                                 <td><?= $listHsinhDaLam['hanNop'] ?></td>
                                 <td><?= $listHsinhDaLam['moTa'] ?></td>
+                                <td>
+                                    <?php
+                                    $fileNop = $giaoVien->taiBaiTuLuan($listHsinhDaLam['maHocSinh'], $listHsinhDaLam['maDe']);
+                                    $file = mysqli_fetch_assoc($fileNop);
+                                    if ($_REQUEST['loaiDe'] == "Đề Tự Luận") {
+                                        if (mysqli_num_rows($fileNop) > 0) {
+                                            if (preg_match("/Nộp Muộn/i", substr($file['tinhTrangNop'], 0, 12))) {
+                                                echo "<a style='text-decoration: none;color:red;' href='" . $file['duongDan'] . "'>
+                                                Download
+                                            </a>";
+                                            } else {
+                                                echo "<a style='text-decoration: none;' href='" . $file['duongDan'] . "'>
+                                                Download
+                                            </a>";
+                                            }
+                                        } else {
+                                            echo "<p><small>Chưa Nộp</small></p>";
+                                        }
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                         <?php
                         }
