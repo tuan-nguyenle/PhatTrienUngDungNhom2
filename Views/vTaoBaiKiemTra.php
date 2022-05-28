@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="timeToDo" class="form-label">Thời gian làm bài</label>
-                    <input type="time" step="2" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeToDo'] : '' ?>">
+                    <input type="text" step="2" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeToDo'] : '' ?>">
                 </div>
                 <div class="col-md-3">
                     <label for="Quantityquestion" class="form-label">Số Lượng Câu Hỏi</label>
@@ -115,7 +115,7 @@
                         <div class="modal-content">
                             <form method="POST">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Tạo Bài Kiểm Tra cho ?</h4>
+                                    <h4 class="modal-title">Xác nhận tạo bài kiểm tra</h4>
                                 </div>
                                 <div class="modal-body">
                                     <!-- $_SESSION['ThongTinThemCauHoi'] = array("timeStart" => $_GET['timeStart'], "txtTenDe" => $_GET['txtTenDe'], "timeEnd" => $_GET['timeEnd'], "lopKiemTra" => $_GET['lopKiemTra'], "hinhThuc" => $_GET['hinhThuc'], "timeToDo" => $_GET['timeToDo']); -->

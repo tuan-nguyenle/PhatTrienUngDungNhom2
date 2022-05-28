@@ -1,5 +1,9 @@
 <?php if ($_GET['timeStart'] == '' or $_GET['timeEnd'] == '' or $_GET['lopKiemTra'] == '' or $_GET['hinhThuc'] == '' or $_GET['timeToDo'] == '' or $_GET['txtTenDe'] == '') {
-    echo "<script>alert('Nhập đầy đủ')</script>";
+    if (($_GET['timeStart'] > $_GET['timeEnd'])) {
+        echo "<script>alert('Ngày Bắt Đầu phải < hơn Ngày Kết Thúc')</script>";
+    } else {
+        echo "<script>alert('Nhập đầy đủ')</script>";
+    }
     echo "<meta http-equiv='refresh' content='0;url=index.php?taoBaiKiemTra'>";
     die();
 }

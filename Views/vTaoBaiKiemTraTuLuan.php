@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="timeToDo" class="form-label">Thời gian làm bài</label>
-                    <input  type="time" step="2" class="form-control" id="timeToDo" name="timeToDo" required value="<?= isset($_REQUEST['timeToDo']) ? $_REQUEST['timeToDo'] : '' ?>">
+                    <input type="time" step="2" class="form-control" id="timeToDo" name="timeToDo" required value="<?= isset($_REQUEST['timeToDo']) ? $_REQUEST['timeToDo'] : '' ?>">
                 </div>
                 <div class="col-md-12">
                     <label for="txtCauHoiTuLuan">Câu hỏi</label>
@@ -68,13 +68,17 @@
 </div>
 <?php
 if (isset($_REQUEST['btnTaoBaiKiemTra'])) {
-    if (isset($_REQUEST['txtCauHoiTuLuan']) and isset($_REQUEST['txtTenDe'])) {
-        $baiTuLuan = $giaoVien->insertBaiKiemTraTuLuan($_REQUEST['txtTenDe'], $_REQUEST['timeStart'], $_REQUEST['timeEnd'],  $_REQUEST['timeToDo'], $_REQUEST['hinhThuc'], $_REQUEST['lopKiemTra'], $_REQUEST['txtCauHoiTuLuan']);
-        if ($baiTuLuan) {
-            echo "<script>alert('Tạo bài kiểm tra thành công')</script>";
-            echo "<meta http-equiv='refresh' content='0;url=index.php?taoBaiKiemTraTuLuan'>";
+    if (isset($_REQUEST['txtCauHoiTuLuan']) and isset($_REQUEST['txtTenDe']) and isset($_REQUEST['timeStart']) and isset($_REQUEST['timeEnd'])) {
+        if ($_REQUEST['timeStart'] < $_REQUEST['timeEnd']) {
+            $baiTuLuan = $giaoVien->insertBaiKiemTraTuLuan($_REQUEST['txtTenDe'], $_REQUEST['timeStart'], $_REQUEST['timeEnd'],  $_REQUEST['timeToDo'], $_REQUEST['hinhThuc'], $_REQUEST['lopKiemTra'], $_REQUEST['txtCauHoiTuLuan']);
+            if ($baiTuLuan) {
+                echo "<script>alert('Tạo bài kiểm tra thành công')</script>";
+                echo "<meta http-equiv='refresh' content='0;url=index.php?taoBaiKiemTraTuLuan'>";
+            } else {
+                echo "<script>alert('Tạo bài kiểm tra thất bại')</script>";
+            }
         } else {
-            echo "<script>alert('Tạo bài kiểm tra thất bại')</script>";
+            echo "<script>alert('Ngày Bắt Đầu phải < hơn Ngày Kết Thúc')</script>";
         }
     } else {
         echo "<script>alert('Nhập Đầy Đủ Thông tin')</script>";
