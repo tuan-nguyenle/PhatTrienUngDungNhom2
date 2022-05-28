@@ -67,10 +67,14 @@
             </form>
             <?php
             if (isset($_REQUEST['btnThemCauHoi'])) {
-                if ($giaoVien->taoCauHoiTracNghiem($_REQUEST['txtKhoi'], $_REQUEST['txtChuong'], strip_tags($_REQUEST['txtCauHoi'], '<strong><i><img>'), $_REQUEST['cbDoKho'], strip_tags($_REQUEST['txtDA1'], '<strong><i><img>'), strip_tags($_REQUEST['txtDA2'], '<strong><i><img>'), strip_tags($_REQUEST['txtDA3'], '<strong><i><img>'), strip_tags($_REQUEST['txtDA4'], '<strong><i><img>'), strip_tags($_REQUEST['txtDADung'], '<strong><i><img>'))) {
-                    echo "<script>alert('Thêm câu hỏi thành công')</script>";
+                if (trim(strip_tags($_REQUEST['txtCauHoi']), '&nbsp;') != null and trim(strip_tags($_REQUEST['txtDA1']), '&nbsp;') != null and trim(strip_tags($_REQUEST['txtDA2']), '&nbsp;') != null and trim(strip_tags($_REQUEST['txtDA3']), '&nbsp;') != null and trim(strip_tags($_REQUEST['txtDA4']), '&nbsp;') != null) {
+                    if ($giaoVien->taoCauHoiTracNghiem($_REQUEST['txtKhoi'], $_REQUEST['txtChuong'], strip_tags($_REQUEST['txtCauHoi'], '<strong><i><img>'), $_REQUEST['cbDoKho'], strip_tags($_REQUEST['txtDA1'], '<strong><i><img>'), strip_tags($_REQUEST['txtDA2'], '<strong><i><img>'), strip_tags($_REQUEST['txtDA3'], '<strong><i><img>'), strip_tags($_REQUEST['txtDA4'], '<strong><i><img>'), strip_tags($_REQUEST['txtDADung'], '<strong><i><img>'))) {
+                        echo "<script>alert('Thêm câu hỏi thành công')</script>";
+                    } else {
+                        echo "<script>alert('Thêm câu hỏi không thành công')</script>";
+                    }
                 } else {
-                    echo "<script>alert('Thêm câu hỏi không thành công')</script>";
+                    echo "<script>alert('Không Được Bỏ trống')</script>";
                 }
             }
             ?>
