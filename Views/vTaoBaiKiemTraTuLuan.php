@@ -68,7 +68,7 @@
 </div>
 <?php
 if (isset($_REQUEST['btnTaoBaiKiemTra'])) {
-    if (isset($_REQUEST['txtCauHoiTuLuan']) and isset($_REQUEST['txtTenDe']) and isset($_REQUEST['timeStart']) and isset($_REQUEST['timeEnd']) and trim(strip_tags($_REQUEST['txtCauHoiTuLuan']), '&nbsp;') != null) {
+    if (isset($_REQUEST['txtCauHoiTuLuan']) and isset($_REQUEST['txtTenDe']) and $_REQUEST['timeStart'] != '' and $_REQUEST['timeEnd'] != '' and trim(strip_tags($_REQUEST['txtCauHoiTuLuan']), '&nbsp;') != '') {
         if ($_REQUEST['timeStart'] < $_REQUEST['timeEnd']) {
             $baiTuLuan = $giaoVien->insertBaiKiemTraTuLuan($_REQUEST['txtTenDe'], $_REQUEST['timeStart'], $_REQUEST['timeEnd'],  $_REQUEST['timeToDo'], $_REQUEST['hinhThuc'], $_REQUEST['lopKiemTra'], $_REQUEST['txtCauHoiTuLuan']);
             if ($baiTuLuan) {
