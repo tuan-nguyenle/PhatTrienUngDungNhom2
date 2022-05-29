@@ -10,9 +10,7 @@
                     <!--<h2>Liên kết</h2>-->
                     <h2>Liên kết</h2>
                     <ul>
-                        <li><a href="http://iuh.edu.vn/" target="_blank">Website Nhà Trường</a></li>
-                        <li><a href="https://csm.iuh.edu.vn/" target="_blank">Website Trung tâm QTHT</a></li>
-                        <li><a href="https://sv.iuh.edu.vn/" target="_blank">Cổng Thông Tin Sinh Viên</a></li>
+                        <li><a href="teammember.html" target="_blank">Website Thành Viên</a></li>
                     </ul>
                 </div>
             </div>

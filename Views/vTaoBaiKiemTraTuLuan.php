@@ -57,7 +57,7 @@
                 <div class="col-md-12">
                     <label for="txtCauHoiTuLuan">Câu hỏi</label>
                     <!-- <textarea type="text" class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan" ></textarea> -->
-                        <textarea class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan"></textarea>
+                    <textarea class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan"></textarea>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-success" style="float: right; margin-bottom: 32px;" name="btnTaoBaiKiemTra">Tạo bài kiểm tra</button>
@@ -68,7 +68,7 @@
 </div>
 <?php
 if (isset($_REQUEST['btnTaoBaiKiemTra'])) {
-    if (isset($_REQUEST['txtCauHoiTuLuan']) and isset($_REQUEST['txtTenDe']) and isset($_REQUEST['timeStart']) and isset($_REQUEST['timeEnd'])) {
+    if (isset($_REQUEST['txtCauHoiTuLuan']) and isset($_REQUEST['txtTenDe']) and isset($_REQUEST['timeStart']) and isset($_REQUEST['timeEnd']) and trim(strip_tags($_REQUEST['txtCauHoiTuLuan']), '&nbsp;') != null) {
         if ($_REQUEST['timeStart'] < $_REQUEST['timeEnd']) {
             $baiTuLuan = $giaoVien->insertBaiKiemTraTuLuan($_REQUEST['txtTenDe'], $_REQUEST['timeStart'], $_REQUEST['timeEnd'],  $_REQUEST['timeToDo'], $_REQUEST['hinhThuc'], $_REQUEST['lopKiemTra'], $_REQUEST['txtCauHoiTuLuan']);
             if ($baiTuLuan) {
@@ -81,8 +81,8 @@ if (isset($_REQUEST['btnTaoBaiKiemTra'])) {
         } else {
             echo "<script>alert('Ngày Bắt Đầu phải < hơn Ngày Kết Thúc')</script>";
         }
-    } /* else {
+    } else {
         echo "<script>alert('Nhập Đầy Đủ Thông tin')</script>";
-    } */
+    }
 }
 ?>
