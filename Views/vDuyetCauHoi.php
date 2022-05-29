@@ -114,7 +114,7 @@
         $duyetCauHoi = $giaoVien->duyetCauHoi($_REQUEST['listCauHoi']);
         if ($duyetCauHoi) {
             echo "<script>alert('Duyệt thành công')</script>";
-            echo "<meta http-equiv='refresh' content='0;url=index.php?duyetCauHoi'>";
+            echo "<meta http-equiv='refresh' content='0;url=index.php?index'>";
         } else {
             echo "<script>alert('Duyệt Thất Bại)</script>";
             echo "<meta http-equiv='refresh' content='0;url=index.php?duyetCauHoi'>";

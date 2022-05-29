@@ -52,12 +52,12 @@
                 </div>
                 <div class="col-md-3">
                     <label for="timeToDo" class="form-label">Thời gian làm bài</label>
-                    <input type="time" step="2" class="form-control" id="timeToDo" name="timeToDo" required value="<?= isset($_REQUEST['timeToDo']) ? $_REQUEST['timeToDo'] : '' ?>">
+                    <input type="text" step="2" class="form-control" id="timeToDo" name="timeToDo" required value="<?= isset($_REQUEST['timeToDo']) ? $_REQUEST['timeToDo'] : '' ?>">
                 </div>
                 <div class="col-md-12">
                     <label for="txtCauHoiTuLuan">Câu hỏi</label>
-                    <textarea type="text" class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan" required>
-                    </textarea>
+                    <!-- <textarea type="text" class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan" ></textarea> -->
+                        <textarea class="form-control" name="txtCauHoiTuLuan" id="txtCauHoiTuLuan"></textarea>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-success" style="float: right; margin-bottom: 32px;" name="btnTaoBaiKiemTra">Tạo bài kiểm tra</button>
@@ -73,15 +73,16 @@ if (isset($_REQUEST['btnTaoBaiKiemTra'])) {
             $baiTuLuan = $giaoVien->insertBaiKiemTraTuLuan($_REQUEST['txtTenDe'], $_REQUEST['timeStart'], $_REQUEST['timeEnd'],  $_REQUEST['timeToDo'], $_REQUEST['hinhThuc'], $_REQUEST['lopKiemTra'], $_REQUEST['txtCauHoiTuLuan']);
             if ($baiTuLuan) {
                 echo "<script>alert('Tạo bài kiểm tra thành công')</script>";
-                echo "<meta http-equiv='refresh' content='0;url=index.php?taoBaiKiemTraTuLuan'>";
+                echo "<meta http-equiv='refresh' content='0;url=index.php?index'>";
             } else {
-                echo "<script>alert('Tạo bài kiểm tra thất bại')</script>";
+                echo "<script>alert('Nhập đầy đủ thông tin')</script>";
+                echo "<meta http-equiv='refresh' content='0;url=index.php?taoBaiKiemTraTuLuan'>";
             }
         } else {
             echo "<script>alert('Ngày Bắt Đầu phải < hơn Ngày Kết Thúc')</script>";
         }
-    } else {
+    } /* else {
         echo "<script>alert('Nhập Đầy Đủ Thông tin')</script>";
-    }
+    } */
 }
 ?>
