@@ -54,12 +54,16 @@ if (isset($_REQUEST['btnEditThongTin'])) {
 
 <?php
 if (isset($_REQUEST['btnEditThongTinTruong'])) {
-    $update = $quanTriThanhPho->updateThongTinTruong($_REQUEST['maTruong'], $_REQUEST['txtTenTruong'], $_REQUEST['txtDiaChiTruong']);
-    if ($update) {
-        echo "<script>alert('Cập Nhật Thành Công')</script>";
-        echo "<meta http-equiv='refresh' content='0;url=quanTriThanhPho.php?quanLiTruong'>";
+    if (isset($_REQUEST['txtTenTruong']) and isset($_REQUEST['txtDiaChiTruong'])) {
+        $update = $quanTriThanhPho->updateThongTinTruong($_REQUEST['maTruong'], $_REQUEST['txtTenTruong'], $_REQUEST['txtDiaChiTruong']);
+        if ($update) {
+            echo "<script>alert('Cập Nhật Thành Công')</script>";
+            echo "<meta http-equiv='refresh' content='0;url=quanTriThanhPho.php?quanLiTruong'>";
+        } else {
+            echo "<script>alert('Cập Nhật Thành Công')</script>";
+        }
     } else {
-        echo "<script>alert('Cập Nhật Thành Công')</script>";
+        echo "<script>alert('Nhập Đầy Đủ Thông Tin')</script>";
     }
 }
 ?>
