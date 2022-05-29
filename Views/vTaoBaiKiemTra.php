@@ -6,7 +6,7 @@
                 <h3 class="text__center col-md-12" style="text-align: center;">Tạo bài kiểm tra môn <?= $giaoVien->getTenMon() ?></h3>
                 <div class="col-md-4">
                     <label for="txtTenDe" class="form-label">Tên Đề</label>
-                    <input type="text" class="form-control" name="txtTenDe" value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['txtTenDe'] : '' ?>">
+                    <input type="text" class="form-control" required name="txtTenDe" value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['txtTenDe'] : '' ?>">
                 </div>
                 <div class="col-md-4">
                     <label for="timeStart" class="form-label">Thời gian mở</label>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="timeToDo" class="form-label">Thời gian làm bài</label>
-                    <input type="text" step="2" class="form-control" id="timeToDo" name="timeToDo" require value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeToDo'] : '' ?>">
+                    <input type="text" step="2" class="form-control" id="timeToDo" name="timeToDo" required value="<?= isset($_SESSION['ThongTinThemCauHoi']) ? $_SESSION['ThongTinThemCauHoi']['timeToDo'] : '' ?>">
                 </div>
                 <div class="col-md-3">
                     <label for="Quantityquestion" class="form-label">Số Lượng Câu Hỏi</label>
